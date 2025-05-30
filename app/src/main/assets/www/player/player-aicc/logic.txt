@@ -1,0 +1,99 @@
+1) parse the aicc files to create the TOC
+2) create the methods to accept the aicc data
+3) create methods to validate the aicc data (should be able to use the same that are used for scorm 1.2)
+4) create methods to store the data as a scorm 1.2 json string
+5) create methods to parse stored scorm 1.2 string to AICC
+6) create method to post aicc data to a server
+7) create method to write aicc text files
+
+AICC files include
+".CRS"
+".AU"
+".DES"
+".CST"
+
+//data string
+//System_ID,type,command_line,Max_Time_Allowed,time_limit_action,Max_Score,Core_Vendor,System_Vendor,File_name,Mastery_Score
+Print #Fp, q + "System_ID" + qc + "type" + qc + "command_line" + _
+         qc + "Max_Time_Allowed" + qc + "time_limit_action" + _
+         qc + "Max_Score" + qc + "Core_Vendor" + qc + "System_Vendor" + _
+         qc + "File_name" + qc + "Mastery_Score" + qc + "Web_Launch" + qc + "AU_Password" + q
+
+PARSE THE MESSAGE
+' Parse the HTTP Message
+X = GetFieldCount(InputBuffer, "&") + 1
+For I = 1 To X
+   nvPair = GetField(InputBuffer, "&", I)
+   ParamName = UCase(GetField(nvPair, "=", 1))
+   ParamValue = GetField(nvPair, "=", 2)
+   Select Case ParamName
+     
+     Case "COMMAND"
+       If Found(1) Then
+          Call ReportErrorWeb("Duplicate COMMAND name in HACP Message", 1, "11001")
+       Else
+          HACP_Command = UCase(ParamValue)
+          Found(1) = True
+       End If
+       
+     Case "VERSION"
+       If Found(2) Then
+          Call ReportErrorWeb("Duplicate VERSION name in HACP Message", 1, "11002")
+       Else
+          HACP_Version = UnPlusIt(UnEscapeIt(ParamValue))
+          Found(2) = True
+       End If
+       
+     Case "SESSION_ID"
+       If Found(3) Then
+          Call ReportErrorWeb("Duplicate SESSION_ID name in HACP Message", 1, "11003")
+       Else
+          HACP_Session_ID = UnPlusIt(UnEscapeIt(ParamValue))
+          Found(3) = True
+       End If
+    
+     Case "AU_PASSWORD"
+       If Found(5) Then
+          Call ReportErrorWeb("Duplicate AU_PASSWORD name in HACP Message", 1, "11004")
+       Else
+          HACP_AU_Password = UnPlusIt(UnEscapeIt(ParamValue))
+          Found(5) = True
+       End If
+     
+     Case "AICC_DATA"
+       If Found(4) Then
+          Call ReportErrorWeb("Duplicate AICC_DATA name in HACP Message", 1, "11005")
+       Else
+          Found(4) = True
+          HACP_AICC_Data = UnPlusIt(UnEscapeIt(ParamValue))
+       End If
+   End Select
+Next I
+
+
+' Check for Missing Required Fields
+For I = 1 To 4
+  If Not Found(I) Then
+    Select Case I
+      Case 1
+        Call ReportErrorWeb("Missing COMMAND name in HACP Message", 1, "11006")
+      Case 2
+        Call ReportErrorWeb("Missing VERSION name in HACP Message", 1, "11007")
+      Case 3
+        Call ReportErrorWeb("Missing SESSION_ID name in HACP Message", 1, "11008")
+     End Select
+  End If
+Next I
+
+
+
+
+
+' Check for Valid HACP Session ID
+If (GetKeyword2("Main", "Current_SID", gMasterLog) <> HACP_Session_ID) Then
+  
+  gAU_ID = GetKeyword2("Main", "AU", SID_log)
+  If Len(Trim(gAU_ID)) = 0 Then gAU_ID = "{empty}"
+  '
+  Call ReportErrorWeb("Invalid HACP Session ID - " + Chr(92) + HACP_Session_ID + Chr(92), 1, "11009")
+  Response_Text = Content_type + "error=3" + CRLF + "error_text=Invalid Session ID"

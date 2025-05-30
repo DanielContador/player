@@ -1,0 +1,79 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".CursoActivity">
+
+
+        <WebView
+            android:id="@+id/activity_main_webview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <TextView
+            android:id="@+id/TextNotContent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="El contenido no existe"
+            android:textColor="@color/md_black_1000"
+            android:textSize="24dp"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/btn_cerrar"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="14dp"
+            android:layout_marginRight="130dp"
+            android:background="@drawable/close_corner"
+            android:text="CERRAR"
+            android:textColor="@color/md_white_1000"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            android:translationZ="5dp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/TextNotContent"
+            android:layout_alignParentStart="true">
+
+            <com.mohammedalaa.gifloading.LoadingView
+                android:id="@+id/loading_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:layout_centerInParent="true"
+                app:block_while_loading="true"
+                app:loading_text="@string/loading"
+                app:loading_text_color="@color/md_black_1000"
+                app:loading_text_size="@dimen/text_size"
+                app:srcImg="@drawable/gear_duo" />
+
+
+            <!-- <ProgressBar
+                 android:id="@+id/back_progress"
+                 style="?android:attr/progressBarStyleLarge"
+                 android:layout_width="100dp"
+                 android:layout_height="100dp"
+                 android:layout_centerInParent="true"
+                 android:layout_marginTop="20dp"
+                 android:layout_marginBottom="8dp"
+                 android:indeterminate="true"
+                 android:visibility="gone" />-->
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+</LinearLayout>

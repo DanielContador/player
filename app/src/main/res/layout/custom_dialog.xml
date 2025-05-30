@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="600dp"
+    android:layout_height="350dp"
+    android:background="#ECECEC"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#3EBFAC"
+        >
+        <TextView
+            android:id="@+id/txt_dia"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:text="Mesa de Ayuda"
+            android:textColor="@android:color/white"
+            android:textSize="30dp"
+            android:layout_centerInParent="true"
+            android:textStyle="bold"
+            android:typeface="normal"
+            />
+
+        <ImageButton
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="#2F8F81"
+            android:layout_alignParentRight="true"
+            android:scaleType="centerCrop"
+            android:padding="7dp"
+            android:src="@drawable/close"
+            android:id="@+id/btn_close"
+            />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+        <ImageView
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.3"
+            android:src="@drawable/icono_mesa_ayuda_48x48"
+            android:layout_margin="20dp"
+            />
+        <LinearLayout
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.7"
+            android:orientation="vertical"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:layout_marginLeft="5dp"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Fono: "
+                    android:textColor="#2F8F81"
+                    android:textSize="35dp"
+                    android:textStyle="bold"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/contact_fono"
+                    android:textSize="30dp"
+                    android:textColor="@color/md_black_1000"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Anexo: "
+                    android:textColor="#2F8F81"
+                    android:textSize="35dp"
+                    android:textStyle="bold"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/contact_anexo"
+                    android:textSize="30dp"
+                    android:textColor="@color/md_black_1000"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Mail: "
+                    android:textColor="#2F8F81"
+                    android:textSize="35dp"
+                    android:textStyle="bold"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/contact_mail"
+                    android:textSize="30dp"
+                    android:textColor="@color/md_black_1000"/>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:layout_gravity="center"
+        android:orientation="horizontal"
+        android:background="#D8D8D8">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/calendar"
+            android:textSize="20dp"
+            android:textColor="@color/md_black_1000"
+            android:gravity="center"
+            android:lines="2"/>
+    </LinearLayout>
+
+</LinearLayout>

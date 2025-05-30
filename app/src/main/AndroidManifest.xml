@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
+        <activity
+            android:name="cl.dl_distancia_a481.player_tablet.activities.BiblioActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="cl.dl_distancia_a481.player_tablet.activities.LoginActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity android:name="cl.dl_distancia_a481.player_tablet.activities.BaseActivity" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="cl.dl_distancia_a481.player_tablet.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
+        <provider
+            android:name="cl.dl_distancia_a481.player_tablet.utils.VideoProvider"
+            android:authorities="cl.dl_distancia_a481.player_tablet.activities"
+            android:exported="true"
+            android:grantUriPermissions="true" />
+
+        <activity
+            android:exported="true"
+            android:name="cl.dl_distancia_a481.player_tablet.activities.SplashScreen"
+            android:screenOrientation="landscape"
+            android:theme="@style/AppThemeSplash"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="cl.dl_distancia_a481.player_tablet.activities.EventsActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="cl.dl_distancia_a481.player_tablet.activities.CursoActivity"
+            android:hardwareAccelerated="true"
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme.Curso" />
+        <activity
+            android:name="cl.dl_distancia_a481.player_tablet.activities.ContentsActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <activity
+            android:name="cl.dl_distancia_a481.player_tablet.activities.TocActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="cl.dl_distancia_a481.player_tablet.activities.PDFActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="cl.dl_distancia_a481.player_tablet.activities.CollapsibleNewsActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="cl.dl_distancia_a481.player_tablet.activities.NewsActivity" />
+        </activity>
+        <activity
+            android:name="cl.dl_distancia_a481.player_tablet.activities.DashboardActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="cl.dl_distancia_a481.player_tablet.activities.NewsActivity"
+            android:configChanges="orientation|keyboardHidden|screenLayout"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="cl.dl_distancia_a481.player_tablet.activities.MesaAyudaActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme.NoActionBar" />
+    </application>
+
+</manifest>

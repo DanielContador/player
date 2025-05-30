@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.MesaAyudaActivity">
+
+
+    <ImageView
+        android:id="@+id/cardIcon"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/logov2" />
+
+
+    <LinearLayout
+        android:id="@+id/help_desk"
+        android:layout_width="850dp"
+        android:layout_height="70dp"
+        android:layout_below="@+id/cardIcon"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="50dp"
+        android:background="@drawable/layout_bg"
+        android:backgroundTint="@color/distGray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="Mesa de Ayuda Digital Learning"
+            android:textColor="@color/md_black_1000"
+            android:textSize="30sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/help_desk"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="50dp"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/layout_bg"
+            android:backgroundTint="@color/distDeepColor">
+
+            <ImageView
+                android:id="@+id/image_mail"
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/ic_mail" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/image_mail"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:gravity="center"
+                android:text="soporte@dl.cl"
+                android:textColor="@color/md_black_1000"
+                android:textSize="20sp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/layout_bg"
+            android:backgroundTint="@color/distDeepColor">
+
+            <ImageView
+                android:id="@+id/image_phone"
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/ic_phone" />
+
+            <TextView
+                android:id="@+id/phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/image_phone"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="+56 2 2495 7722"
+                android:textColor="@color/md_black_1000"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/phone"
+                android:gravity="center"
+                android:text="Anexo 100"
+                android:layout_marginBottom="8dp"
+                android:textColor="@color/md_black_1000"
+                android:textSize="20sp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/layout_bg"
+            android:backgroundTint="@color/distDeepColor">
+
+            <ImageView
+                android:id="@+id/image_clock"
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/ic_clock" />
+
+            <TextView
+                android:id="@+id/text_clock_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/image_clock"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="Lunes a Jueves:"
+                android:textColor="@color/md_black_1000"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/text_clock_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/text_clock_1"
+                android:gravity="center"
+                android:text="de 09:00 a 18:00 horas."
+                android:textColor="@color/md_black_1000"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/text_clock_3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/text_clock_2"
+                android:gravity="center"
+                android:text="Viernes:"
+                android:textColor="@color/md_black_1000"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/text_clock_4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/text_clock_3"
+                android:gravity="center"
+                android:layout_marginBottom="8dp"
+                android:text="de 09:00 a 16:30 horas."
+                android:textColor="@color/md_black_1000"
+                android:textSize="20sp" />
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+
+</RelativeLayout>

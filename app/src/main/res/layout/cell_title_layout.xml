@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/item_activity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:background="@drawable/event_gradient"
+        android:padding="5dp">
+
+        <ImageView
+            android:id="@+id/imageViewImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:src="@drawable/icono_capacitacion_48x48" />
+
+        <TextView
+            android:id="@+id/textViewItemTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/imageViewImage"
+            android:layout_centerInParent="true"
+            android:text="Evento 1"
+            android:textColor="@color/md_white_1000"
+            android:textSize="20sp" />
+
+    </RelativeLayout>
+
+    <!--<com.google.android.material.card.MaterialCardView
+        android:id="@+id/event_cardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        app:cardCornerRadius="4dp"
+        app:cardElevation="4dp">
+
+        <RelativeLayout
+            android:id="@+id/item_activity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="8dp">
+
+            <ImageView
+                android:id="@+id/imageViewImage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginEnd="18dp" />
+
+            <TextView
+                android:id="@+id/textViewItemTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/imageViewImage"
+                android:textSize="30sp" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_no_init"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textViewItemTitle"
+                android:layout_toEndOf="@+id/imageViewImage"
+                android:text="No iniciado" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_no_comp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textViewItemTitle"
+                android:layout_toEndOf="@+id/imageViewImage"
+                android:text="En curso" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_completado"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textViewItemTitle"
+                android:layout_toEndOf="@+id/imageViewImage"
+                android:text="Completado" />
+
+
+        </RelativeLayout>
+
+
+    </com.google.android.material.card.MaterialCardView>-->
+
+</LinearLayout>

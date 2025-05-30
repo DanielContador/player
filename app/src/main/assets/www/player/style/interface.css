@@ -1,0 +1,145 @@
+* {
+    margin: 0;
+    padding: 0
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+    overflow: hidden
+}
+
+table {
+    height: 100%;
+    width: 100%;
+    border-collapse: collapse
+}
+
+iframe {
+    height: 100%;
+    width: 100%
+}
+
+body {
+    background-color: #ffffff;
+    font-family: Verdana, Arial, sans-serif;
+}
+
+#toc {
+
+}
+
+#toc ul {
+    -webkit-margin-before: 0;
+    -webkit-margin-after: 0;
+    -webkit-margin-start: 0;
+    -webkit-margin-end: 0;
+
+    list-style-type: none;
+    font-size: 13px;
+    padding-left: 0;
+    margin: 0;
+}
+
+#toc li {
+    -webkit-margin-before: 0;
+    -webkit-margin-after: 0;
+    -webkit-margin-start: 0;
+    -webkit-margin-end: 0;
+
+    list-style-type: none;
+    background: url(../images/status/unknown.gif) no-repeat 0 0;
+    padding: 0 0 0 1.5em;
+    margin-top: 0.25em;
+    font-size: 13px;
+    line-height: 19px;
+}
+
+.menu-helper {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 10px;
+}
+
+.jca-navigation-menu {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 0px;
+    right: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.jca-toc-holder {
+    position: absolute;
+    top: 0px;
+    left: 0;
+    bottom: 0;
+    width: 200px;
+    vertical-align: top;
+    overflow-y: auto;
+}
+
+#frame-here {
+    position: absolute;
+    top: 0px;
+    left: 250px;
+    bottom: 0;
+    right: 0;
+
+}
+
+#sco_navigation {
+    text-align: center;
+}
+
+.btn {
+    opacity: 0.5;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+    width: 32px;
+    height: 68px;
+}
+
+
+/*menu lateral*/
+#btnToggle { position:absolute !important; top:50%; left:0 !important; z-index:9999!important}
+#sideMenu{ margin-left:15px; padding-top:15px; width:200px;}
+
+.titulo_curso, .titModuloCurso {
+	border-radius: 5px;
+	color: #fff;
+	padding: 10px 15px;
+	margin-bottom: 15px;
+}
+.titulo_curso {
+	background-color: #00A3A6;
+}
+.titModuloCurso {
+	background-color: #ED6838;
+}
+
+.jca-toc-holder {
+	float: left;
+	padding-right: 20px;
+	width: 200px;
+	padding-top:5px;
+	-webkit-box-shadow: 16px -11px 15px -23px rgba(0,0,0,0.75);
+-moz-box-shadow: 16px -11px 15px -23px rgba(0,0,0,0.75);
+box-shadow: 16px -11px 15px -23px rgba(0,0,0,0.75);
+}
+.jca-toc-holder ul {
+	padding-left: 15px;
+}
+#menu_level_0 li {
+	padding-left: 0;
+	margin-top: 0;
+}
+#menu_level_1 li {
+	padding-left: 25px;
+	margin-bottom: 5px;
+	margin-right: 5px;
+}

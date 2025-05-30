@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <link href="style/interface.css?v=2014070109" rel="stylesheet" type="text/css">
+    <link href="style/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="style/bootstrap.css" rel="stylesheet" type="text/css">
+    <script>
+         var courseDirectory = String(window.JSInterface.getSCO());//'EV';
+         var courseId = window.JSInterface.getCourseId();
+         var studentName = String(window.JSInterface.getStudentName());
+         var studentId = String(window.JSInterface.getRegistroId());
+         var idRegistro = String(window.JSInterface.getRegistroId());
+         var versionScorm = "1.2";//se setea en 1.2 pero el player la cambia según el SCO
+        // var from = '@ViewBag.from';
+     </script>
+    <script type="text/javascript" src="js/jquery-1.12.3.min.js"></script>
+    <script src="config_override.js?v=2014070109" type="text/javascript"></script>
+    <script src="js/ssla.min.js?v=2014070109" type="text/javascript"></script>
+    <script>
+        var menuOpened =true;
+          function toggleMenu(){
+            if(menuOpened){
+                 $("#sideMenu").hide();
+                 $("#frame-here").css("left","0px");
+                 $("#btnToggle").attr('class', 'btn fa fa-angle-right fa-5');
+                 menuOpened =false;
+            }else{
+                $("#sideMenu").show();
+                $("#frame-here").css("left","200px");
+                $("#btnToggle").attr('class', 'btn fa fa-angle-left fa-5');
+                menuOpened =true;
+            }
+        }
+
+        function hideMenu(){
+            $("#sideMenu").hide();
+            $("#frame-here").css("left","0px");
+            $("#btnToggle").attr('class', 'btn fa fa-angle-right fa-5');
+        }
+    </script>
+</head>
+
+<body onload="prepareFrames()" onbeforeunload="wrapUp()">
+<div  class="jca-navigation-menu" style="visibility: hidden;">
+    <p class="menu-helper">
+        <span id="show_statement_log_holder" style="visibility: hidden;"> |
+            <a id="show_statement_holder" href="#" onClick="showStatementLog()">Show Statement Log</a>
+        </span>
+    </p>
+
+    <div id="sco_navigation" style="display: none" style="visibility: hidden;">
+        <button id="exit" onClick="navigate('exit')">Exit</button>
+        <button id="prev" onClick="navigate('previous')">Previous</button>
+        <button id="next" onClick="navigate('next')">Next</button>
+    </div>
+</div>
+
+<button type="button" id="btnToggle" onclick="toggleMenu();" style="visibility: hidden;" class="btn fa fa-angle-left fa-5">
+</button>
+
+<div class="jca-toc-holder" id="sideMenu">
+    <div id="toc" >
+    </div>
+    <div style="display: none">
+        <form name="frmMain" id="frmMain" action="">
+            <br>
+            <label for="student_name">Learner Name:</label> <input name="student_name" id="student_name" value=""
+                                                                   type="text">
+            <br>
+            <label for="student_id">Learner ID:</label> <input name="student_id" id="student_id" value="" type="text">
+            <br>
+            <label for="credit-credit">Launch the SCOs in this course for (credit/no-credit):</label>
+            <br>
+            <input name="credit" id="credit-credit" value="credit" type="radio" checked>Credit
+            <input name="credit" id="credit-no-credit" value="no-credit" type="radio">No Credit
+            <br>
+            <label for="mode-normal">Launch the SCOs in (normal, browse, review) mode:</label>
+            <br>
+            <input name="mode" id="mode-normal" value="normal" type="radio" checked>Normal
+            <input name="mode" id="mode-browse" value="browse" type="radio">Browse
+            <input name="mode" id="mode-review" value="review" type="radio">Review
+        </form>
+        <br>
+        Note: For the ADL test suite Mary Learner should have no-credit and browsed set. Also, remember to clear
+        the cookies
+        between the
+        Joe Student and Mary Learner tests.
+        <br>
+        <div id="course_completion_status_div">Course Completion Status:
+            <div id="course_completion_status">incomplete</div>
+        </div>
+        <br>
+        <div id="course_success_status_div">Course Success Status:
+            <div id="course_success_status">failed</div>
+        </div>
+        <br>
+        <div id="course_grade_div">Course Grade:
+            <div id="course_grade">0</div>
+        </div>
+    </div>
+</div>
+
+<div id="frame-here">
+</div>
+
+</body>
+
+<script>
+    //Hide MENU
+    $("#sideMenu").hide();
+    $("#frame-here").css("left","0px");
+    $("#btnToggle").attr('class', 'btn fa fa-angle-right fa-5');
+</script>
+
+</html>
+
+

@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>AICC to SCORM Communication Launch</title>
+<script type="text/javascript" src="Scripts/APIWrapper.js"></script>
+<script type="text/javascript" src="Scripts/comm.js"></script>
+</head>
+
+<body onload="InitializeCommunication();" onUnload="Exit();">
+<form id="qForm" action="" method="POST">
+<center>
+    <fieldset style="width:50%;">
+        <legend><b>Launch Comm from jca web server</b></legend>
+        <input type="button" name="launchSco" value="Launch Communication SCO" onclick="LaunchCommWindow()" />
+    </fieldset>
+</center>
+<br/>
+<br/>
+<center><h1>BEFORE EXITING PLEASE CLICK READ DATA BUTTON BELOW!</h1></center>
+<center>
+    <fieldset style="width:50%;">
+        <legend><b>Read Data from Communication SCO</b></legend>
+        <input type="button" name="readData" value="Read Communication Data" onclick="CloseCommunication()" />
+    </fieldset>
+</center>
+</form>
+</html>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="600dp"
+    android:layout_height="wrap_content"
+    android:background="#00ffffff"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="@drawable/layout_corner"
+        >
+
+        <TextView
+            android:id="@+id/txt_dia"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:text="Confirmar Salida"
+            android:textColor="@android:color/white"
+            android:textSize="30dp"
+            android:textStyle="bold"
+            android:typeface="normal"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:paddingBottom="15dp"
+            />
+
+
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/bg_corner"
+        android:layout_marginTop="-20px">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="¿Estás seguro que deseas abandonar el curso?"
+                android:textColor="#2F8F81"
+                android:textSize="25dp"
+                android:textStyle="bold"
+                android:gravity="center"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="110dp"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <Button
+                android:id="@+id/btn_si"
+                android:layout_width="1dp"
+                android:layout_weight="0.5"
+                android:layout_height="wrap_content"
+                android:text="Si"
+                android:textSize="30dp"
+                android:background="#BD0926"
+                android:layout_marginRight="60dp"
+                android:layout_marginLeft="100dp"
+                android:paddingBottom="15dp"
+                android:paddingTop="15dp"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
+                android:layout_gravity="center_vertical"
+                />
+            <Button
+                android:id="@+id/btn_no"
+                android:layout_width="1dp"
+                android:layout_weight="0.5"
+                android:layout_height="wrap_content"
+                android:text="NO"
+                android:textSize="30dp"
+                android:background="#40A52B"
+                android:layout_marginRight="100dp"
+                android:layout_marginLeft="60dp"
+                android:paddingBottom="15dp"
+                android:paddingTop="15dp"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
+                android:layout_gravity="center_vertical"
+                />
+        </LinearLayout>
+    </LinearLayout>
+
+
+
+</LinearLayout>

@@ -1,0 +1,56 @@
+<resources>
+
+    <string name="app_name">a</string>
+    <string name="title_activity_login_academia">Sign in</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="action_logout">Logout</string>
+
+    <string name="loading">Cargando...</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password (optional)</string>
+    <string name="action_sign_in">Entrar</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">La clave SENCE ingresada es incorrecta, vuelva a ingresarla</string>
+    <string name="error_invalid_password_login">Password incorrecto</string>
+    <string name="link_sence"><a href="http://cus.sence.cl/Account/Registrar">Click para registrar en Sence</a></string>
+    <string name="error_not_network">Necesita conexión</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">Campo requerido</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+    <string name="contact_fono"> (56-2) 24957722</string>
+    <string name="contact_anexo"> 100</string>
+    <string name="contact_mail"> soporte@dl.cl</string>
+    <string name="calendar"> Lunes a Jueves de 09:00 a 18:00 hrs. \n Viernes de 09:00 a 17:30 hrs.</string>
+    <string name="article_tittle">Some Text</string>
+    <string name="article_body">Lorem ipsum dolor sit amet, an sit fugit officiis deserunt, audiam disputando at sit. Eu mel expetenda voluptatibus. Ius no accusam scripserit.\n\n Sea error iracundia ne, duo ne dicat partem sententiae. Nibh admodum facilisi ius in. Ius legere intellegam ei, in zril deserunt qui.At alii audire scripta mea, errem disputando quo in.\n\n Elit vocent legimus cum ei. Eu nonumes eligendi pericula sit. Ceteros omnesque facilisis id vix, at dico choro perpetua est, et dolore oblique vituperata qui. \n\nLorem ipsum dolor sit amet, an sit fugit officiis deserunt, audiam disputando at sit. Eu mel expetenda voluptatibus. Ius no accusam scripserit.\n\n Sea error iracundia ne, duo ne dicat partem sententiae. Nibh admodum facilisi ius in. Ius legere intellegam ei, in zril deserunt qui.At alii audire scripta mea, errem disputando quo in.\n\n Elit vocent legimus cum ei. Eu nonumes eligendi pericula sit. Ceteros omnesque facilisis id vix, at dico choro perpetua est, et dolore oblique vituperata qui.\n\nLorem ipsum dolor sit amet, an sit fugit officiis deserunt, audiam disputando at sit. Eu mel expetenda voluptatibus. Ius no accusam scripserit.\n\n Sea error iracundia ne, duo ne dicat partem sententiae. Nibh admodum facilisi ius in. Ius legere intellegam ei, in zril deserunt qui.At alii audire scripta mea, errem disputando quo in.\n\n Elit vocent legimus cum ei. Eu nonumes eligendi pericula sit. Ceteros omnesque facilisis id vix, at dico choro perpetua est, et dolore oblique vituperata qui. \n\nLorem ipsum dolor sit amet, an sit fugit officiis deserunt, audiam disputando at sit. Eu mel expetenda voluptatibus. Ius no accusam scripserit.\n\n Sea error iracundia ne, duo ne dicat partem sententiae. Nibh admodum facilisi ius in. Ius legere intellegam ei, in zril deserunt qui.At alii audire scripta mea, errem disputando quo in.\n\n Elit vocent legimus cum ei. Eu nonumes eligendi pericula sit. Ceteros omnesque facilisis id vix, at dico choro perpetua est, et dolore oblique vituperata qui.</string>
+    <string name="see_more">Ver más</string>
+    <string name="text_button_capac">Mi Capacitación</string>
+    <string name="mesa_de_ayuda">Mesa de Ayuda</string>
+    <string name="see_news">Ver Artículos</string>
+    <string name="res_men_global_de_avance">Resúmen Global de Avance</string>
+    <string name="salir">Salir</string>
+    <string name="menu_art_culos">Menú Artículos</string>
+    <string name="cerrar">Cerrar</string>
+    <string name="error_cargando">Error Cargando contenido</string>
+    <string name="visor_pdf">Lector de Documentos</string>
+    <string name="puntos_suspensivos">...</string>
+    <string name="capacitacion">Mi Capacitación</string>
+    <string name="title_training"><![CDATA[
+        Iniciar Mi <font color="#11ADCF">Capacitación</font>
+    ]]></string>
+    <string name="sobre_nosot"><![CDATA[
+        Sobre <font color="#11ADCF">nosotros</font>
+    ]]></string>
+    
+
+
+</resources>

@@ -1,0 +1,17 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+<script src="js/ssla.min.js?v=20140702" type="text/javascript"></script>
+<script type="text/javascript">
+    var utilsInstance = new Utils();
+    var objVars = utilsInstance.parseQueryString(document.location.href);
+    str = "?" + "courseId=" + objVars['courseId'] + "&studentId=" + objVars['studentId'] + "&studentName=" + objVars['studentName'] + "&courseDirectory=" + objVars['courseDirectory'] + "&credit=" + objVars['credit'] + "&mode=" + objVars['mode'];
+     
+	 document.location.replace("player.htm" + str);
+</script>
+<body></body>
+</html>

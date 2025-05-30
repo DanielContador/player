@@ -1,0 +1,489 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:id="@+id/item_content"
+    android:layout_width="match_parent"
+    android:layout_height="450dp"
+    android:layout_marginStart="12dp"
+    android:layout_marginEnd="12dp"
+    android:clickable="true"
+    android:orientation="horizontal"
+    android:background="#E2E2E2">
+
+
+    <!-- Nuevo LinearLayout horizontal para content_item y right_container -->
+    <LinearLayout
+        android:id="@+id/horizontal_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <!-- content_item cuadrado -->
+        <RelativeLayout
+            android:id="@+id/content_item"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:layout_gravity="start"
+            android:elevation="4dp"
+            android:padding="5dp">
+
+
+            <!-- NUEVO: Imagen de fondo para bg_left, inicialmente invisible -->
+            <ImageView
+                android:id="@+id/bg_left_image"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/bg_left"
+                android:visibility="gone"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp" />
+
+
+            <!-- Contenedor centrado para el número del ítem -->
+            <RelativeLayout
+                android:id="@+id/item_number_container"
+                android:layout_width="327dp"
+                android:layout_height="80dp"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentTop="true">
+
+                <TextView
+                    android:id="@+id/item_number"
+                    android:layout_width="32dp"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentEnd="true"
+                    android:text="1"                            
+                    android:textColor="#262626"
+                    android:textSize="60sp"
+                    android:textStyle="bold"
+                    android:background="@android:color/transparent" />
+            </RelativeLayout>
+
+            <!-- Nuevo contenedor para barra de progreso debajo del número -->
+            <RelativeLayout
+                android:id="@+id/progress_container_item"
+                android:layout_width="327dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/item_number_container"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="0dp">
+
+                <ProgressBar
+                    android:id="@+id/totalProgressBar_item"
+                    android:layout_width="327dp"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginBottom="4dp"
+                    android:progress="50"
+                    android:progressTint="@color/distProgress"
+                />
+                <TextView
+                    android:id="@+id/totalProgress_item"
+                    android:layout_width="327dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/totalProgressBar_item"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="-8dp"
+                    android:gravity="center"
+                    android:text="50%"
+                    android:textColor="#1B1B41"
+                    android:textSize="12sp"
+                    android:textStyle="normal"
+                />
+            </RelativeLayout>
+
+            <!-- Nuevo contenedor para el texto de bienvenida debajo de la barra de progreso -->
+            <RelativeLayout
+                android:id="@+id/welcome_container"
+                android:layout_width="327dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/progress_container_item"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="8dp">
+
+                <TextView
+                    android:id="@+id/textViewItemTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:text="Fundamentos de la Legislación Previsional de Protecion Social en Chile"
+                    android:textColor="#333333"
+                    android:textStyle="bold"
+                    android:fontFamily="bevietnampro"
+                    android:textSize="20sp" />
+            </RelativeLayout>
+
+            <!-- Nuevo contenedor para el párrafo debajo del texto de bienvenida -->
+            <RelativeLayout
+                android:id="@+id/paragraph_container"
+                android:layout_width="327dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/welcome_container"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="8dp">
+
+                <TextView
+                    android:id="@+id/paragraph"
+                    android:layout_width="327dp"
+                    android:layout_height="72dp"
+                    android:text="Explicación blablaExplicación labl aExplicac ión blablblablaEx plicación bl abla"
+                    android:textSize="16sp"
+                    android:textColor="#4C4C4D"
+                    android:lineSpacingExtra="4sp"
+                    android:gravity="top"
+                    android:fontFamily="bevietnampro"
+                    />
+            </RelativeLayout>
+
+            <!-- Nuevo contenedor para el botón debajo del párrafo -->
+            <RelativeLayout
+                android:id="@+id/button_container"
+                android:layout_width="330dp"
+                android:layout_height="40dp"
+                android:layout_below="@id/paragraph_container"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="25dp"
+                android:background="@drawable/button">
+
+                <TextView
+                    android:id="@+id/button_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="Entrar"
+                    android:textColor="#FF9500"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:fontFamily="bevietnampro"
+                />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/relative"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/relativeStatus"
+                android:layout_centerInParent="true"
+                android:layout_marginStart="20dp"
+                >
+
+
+            <!-- Elimina el TextView de bienvenida de aquí -->
+            </RelativeLayout>
+
+            
+
+            <!-- Eliminar este bloque completo -->
+            <!--
+            <RelativeLayout
+                android:id="@+id/item_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentStart="true"
+                android:background="@drawable/complete_card"
+                android:padding="5dp">
+
+                <TextView
+                    android:id="@+id/statusText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="No Intentado"
+                    android:textColor="@color/black" />
+            </RelativeLayout>
+            -->
+
+                
+                
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/content_item_eval"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:background="@drawable/card_eval"
+                android:elevation="4dp"
+                android:padding="5dp"
+                android:visibility="gone">
+
+            <RelativeLayout
+                android:id="@+id/relativeEval"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/relativeEvalStatus"
+                android:layout_centerInParent="true"
+                android:layout_marginStart="20dp">
+
+                <ImageView
+                    android:id="@+id/imageEval"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginEnd="18dp"
+                    android:src="@drawable/icono_evaluacion_48x48" />
+
+                <TextView
+                    android:id="@+id/textViewItemTitle_eval"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/imageEval"
+                    android:layout_centerHorizontal="true"
+                    android:text="CONTENIDO CONTENIDO"
+                    android:textColor="@color/md_white_1000"
+                    android:textSize="17sp" />
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/relativeEvalStatus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:id="@+id/estado_eval"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="0dp"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:id="@+id/statusEvalText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:textColor="@color/md_white_1000"
+                        android:text="En curso" />
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/item_eval_points"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/relativeEval"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:id="@+id/intentos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginEnd="8dp"
+                    android:text="NOTAS"
+                    android:textColor="@color/md_white_1000"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/porcent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/intentos"
+                    android:layout_centerHorizontal="true"
+                    android:text="PORCIENTO"
+                    android:textColor="@color/md_white_1000"
+                    android:textSize="15sp" />
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+        <!-- Nuevo contenedor derecho, por defecto oculto -->
+        <RelativeLayout
+            android:id="@+id/right_container"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_gravity="end"
+            android:background="#FFDDDD"
+            android:visibility="gone"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/right_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Texto de ejemplo"
+                android:textColor="#000"
+                android:textSize="18sp"
+                android:layout_centerInParent="true"/>
+        </RelativeLayout>
+    </LinearLayout>
+
+    <!--<com.google.android.material.card.MaterialCardView
+        android:id="@+id/content_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:backgroundTint="@color/distGray"
+        app:cardCornerRadius="4dp"
+        app:cardElevation="4dp">
+
+        <RelativeLayout
+            android:id="@+id/item_activity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="8dp"
+            android:padding="16dp">
+
+            <ImageView
+                android:id="@+id/imageViewImage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginEnd="18dp"
+                android:src="@drawable/icono_libro_contenido_48x48"/>/>
+
+            <TextView
+                android:id="@+id/textViewItemTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/imageViewImage"
+                android:textColor="@color/md_white_1000"
+                android:textSize="20sp" />
+
+            <ImageView
+                android:id="@+id/title_divider"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/textViewItemTitle"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_toEndOf="@+id/imageViewImage"
+                android:src="@color/contentDividerLine" />
+
+            <TextView
+                android:id="@+id/textViewItemContent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/title_divider"
+                android:layout_toEndOf="@+id/imageViewImage"
+                android:textColor="@color/md_white_1000"
+                android:visibility="gone"
+                android:textSize="15sp" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_no_init"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textViewItemContent"
+                android:layout_toEndOf="@+id/imageViewImage" />
+
+        </RelativeLayout>
+
+
+    </com.google.android.material.card.MaterialCardView>-->
+
+    <!--<com.google.android.material.card.MaterialCardView
+         android:id="@+id/content_item_eval"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:layout_gravity="center_vertical"
+         android:layout_marginStart="15dp"
+         android:layout_marginTop="10dp"
+         android:layout_marginEnd="10dp"
+         android:layout_marginBottom="10dp"
+         android:backgroundTint="@color/distGray"
+         app:cardCornerRadius="4dp"
+         app:cardElevation="4dp">
+
+         <RelativeLayout
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:elevation="8dp"
+             android:padding="16dp">
+
+             <ImageView
+                 android:id="@+id/imageEval"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_alignParentTop="true"
+                 android:layout_marginEnd="18dp"
+                 android:src="@drawable/icono_evaluacion_48x48"/>
+
+             <TextView
+                 android:id="@+id/textViewItemTitle_eval"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_toEndOf="@+id/imageEval"
+                 android:textColor="@color/md_white_1000"
+                 android:textSize="20sp" />
+
+             <ImageView
+                 android:id="@+id/title_divider2"
+                 android:layout_width="match_parent"
+                 android:layout_height="1dp"
+                 android:layout_below="@id/textViewItemTitle_eval"
+                 android:layout_marginTop="5dp"
+                 android:layout_marginBottom="5dp"
+                 android:layout_toEndOf="@+id/imageEval"
+                 android:src="@color/contentDividerLine" />
+
+             <TextView
+                 android:id="@+id/textViewItemContent_eval"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_below="@+id/title_divider2"
+                 android:layout_toEndOf="@+id/imageEval"
+                 android:textColor="@color/md_white_1000"
+                 android:visibility="gone"
+                 android:textSize="15sp" />
+
+             <TextView
+                 android:id="@+id/intentos"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_below="@+id/textViewItemContent_eval"
+                 android:layout_toStartOf="@+id/custom_divider"
+                 android:layout_marginEnd="8dp"
+                 android:text="NOTAS"
+                 android:textSize="15sp" />
+
+             <TextView
+                 android:id="@+id/custom_divider"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_below="@+id/textViewItemContent_eval"
+                 android:layout_toStartOf="@+id/porcent"
+                 android:layout_marginEnd="8dp"
+                 android:text="|"
+                 android:textSize="15sp" />
+
+             <TextView
+                 android:id="@+id/porcent"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_below="@+id/textViewItemContent_eval"
+                 android:layout_alignParentEnd="true"
+                 android:text="PORCENT"
+                 android:textSize="15sp" />
+
+
+             <com.google.android.material.chip.Chip
+                 android:id="@+id/estado_eval"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_below="@+id/textViewItemContent_eval"
+                 android:layout_toEndOf="@+id/imageEval" />
+
+         </RelativeLayout>
+
+
+     </com.google.android.material.card.MaterialCardView>-->
+
+
+</RelativeLayout>
