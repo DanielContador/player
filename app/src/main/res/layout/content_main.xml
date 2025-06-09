@@ -46,10 +46,9 @@
                 android:layout_marginTop="8dp"
                 android:text="Hola! Aquí encontrarás todas las herramientas para desempeñar tus funciones"
                 android:textSize="24sp"
-                                    android:fontFamily="font/bevietnampro"
-
+                android:fontFamily="font/bevietnampro"
                 android:lineSpacingExtra="2sp"
-                android:textColor="#00213B"/>
+                android:textColor="#00213B" />
             <RelativeLayout
                 android:id="@+id/frame_1"
                 android:layout_width="374dp"

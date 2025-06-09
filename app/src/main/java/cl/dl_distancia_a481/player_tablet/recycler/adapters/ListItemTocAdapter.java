@@ -13,10 +13,12 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
+import android.widget.ProgressBar;
 import com.github.vipulasri.timelineview.TimelineView;
 
 import java.util.ArrayList;
+
+import org.w3c.dom.Text;
 
 import cl.dl_distancia_a481.player_tablet.R;
 import cl.dl_distancia_a481.player_tablet.activities.CursoActivity;
@@ -26,6 +28,8 @@ public class ListItemTocAdapter extends RecyclerView.Adapter<ListItemTocAdapter.
 
     private ArrayList<TocItem> listtocitems;
     private final LayoutInflater mInflater;
+    private int progresoCurso = 0;
+    private int number=0;
     Context context;
     Bundle bundle;
 
@@ -34,7 +38,7 @@ public class ListItemTocAdapter extends RecyclerView.Adapter<ListItemTocAdapter.
         final ListItemTocAdapter mAdapter;
         public TimelineView mTimelineView;
 
-        public ViewHolder(View itemView, ListItemTocAdapter adapter,int viewType) {
+        public ViewHolder(View itemView, ListItemTocAdapter adapter, int viewType) {
             super(itemView);
             this.mAdapter = adapter;
             mTimelineView = itemView.findViewById(R.id.timeline);
@@ -42,20 +46,22 @@ public class ListItemTocAdapter extends RecyclerView.Adapter<ListItemTocAdapter.
         }
     }
 
-
     // Adapter's Constructor
     public ListItemTocAdapter(Context context, ArrayList<TocItem> listtocitems, Bundle b) {
         mInflater = LayoutInflater.from(context);
         this.listtocitems = listtocitems;
         this.context = context;
         this.bundle = b;
+
+        this.progresoCurso = b.getInt("Progreso", 0);
+        this.number = b.getInt("Number", 0);
     }
 
     // Create new views. This is invoked by the layout manager.
     @Override
     public ListItemTocAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v;
-        //v = mInflater.inflate(R.layout.item_activity, parent, false);
+        // v = mInflater.inflate(R.layout.item_activity, parent, false);
         switch (viewType) {
             case 0:
                 v = mInflater.inflate(R.layout.item_activity, parent, false);
@@ -67,7 +73,7 @@ public class ListItemTocAdapter extends RecyclerView.Adapter<ListItemTocAdapter.
                 v = mInflater.inflate(R.layout.item_activitytitle, parent, false);
                 break;
         }
-        return new ViewHolder(v,this ,viewType);
+        return new ViewHolder(v, this, viewType);
     }
 
     @Override
@@ -75,22 +81,27 @@ public class ListItemTocAdapter extends RecyclerView.Adapter<ListItemTocAdapter.
         return listtocitems.size();
     }
 
-
     @Override
     public int getItemViewType(int position) {
         // Just as an example, return 0 or 2 depending on position
         // Note that unlike in ListView adapters, types don't have to be contiguous
-        //return TimelineView.getTimeLineViewType(position, getItemCount());
+        // return TimelineView.getTimeLineViewType(position, getItemCount());
         if (listtocitems.get(position).parent) {
             return 1;
         } else {
             return 0;
         }
     }
+
     // Replace the contents of a view (invoked by the layout manager)
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
-
+        TextView textViewNumber = holder.itemView.findViewById(R.id.number);
+        textViewNumber.setText("0"+number);
+        TextView progresoText = holder.itemView.findViewById(R.id.itemProgress);
+        progresoText.setText(progresoCurso + "%");
+        ProgressBar progreso = holder.itemView.findViewById(R.id.itemProgressBar);
+        progreso.setProgress(progresoCurso);
         TextView textViewTitle = holder.itemView.findViewById(R.id.item_name);
         textViewTitle.setText(listtocitems.get(position).name);
         RelativeLayout chipEstado = holder.itemView.findViewById(R.id.chip_estado);
@@ -110,15 +121,17 @@ public class ListItemTocAdapter extends RecyclerView.Adapter<ListItemTocAdapter.
             RelativeLayout item = holder.itemView.findViewById(R.id.item_activity);
             TimelineView mTimelineView = holder.itemView.findViewById(R.id.timeline);
             ImageView arrow = holder.itemView.findViewById(R.id.goArrow);
-            /*if (textViewTitle.getText().toString().startsWith("Unidad")){
-                mTimelineView.getMarker().setVisible(false,false);
-                picture.setImageDrawable(context.getDrawable(R.drawable.rocket));
-                chipEstado.setVisibility(View.GONE);
-                arrow.setVisibility(View.GONE);
-            }*/
+            /*
+             * if (textViewTitle.getText().toString().startsWith("Unidad")){
+             * mTimelineView.getMarker().setVisible(false,false);
+             * picture.setImageDrawable(context.getDrawable(R.drawable.rocket));
+             * chipEstado.setVisibility(View.GONE);
+             * arrow.setVisibility(View.GONE);
+             * }
+             */
             switch (listtocitems.get(position).state) {
                 case "completed":
-                    //item.setBackground(context.getDrawable(R.drawable.toc_complete));
+                    // item.setBackground(context.getDrawable(R.drawable.toc_complete));
                     mTimelineView.setMarker(context.getDrawable(R.drawable.ic_icono_check_completado_37x37));
 
                     statusText.setText("Completado");
@@ -126,7 +139,7 @@ public class ListItemTocAdapter extends RecyclerView.Adapter<ListItemTocAdapter.
                     break;
 
                 case "incomplete":
-                    //item.setBackground(context.getDrawable(R.drawable.toc_current));
+                    // item.setBackground(context.getDrawable(R.drawable.toc_current));
                     mTimelineView.setMarker(context.getDrawable(R.drawable.ic_icono_check_en_curso_37x37));
 
                     statusText.setText("En curso");
@@ -134,14 +147,14 @@ public class ListItemTocAdapter extends RecyclerView.Adapter<ListItemTocAdapter.
                     break;
 
                 case "passed":
-                    //item.setBackground(context.getDrawable(R.drawable.toc_passed));
+                    // item.setBackground(context.getDrawable(R.drawable.toc_passed));
 
                     statusText.setText("Completado");
                     chipEstado.setBackground(holder.itemView.getResources().getDrawable(R.drawable.complete_card));
                     break;
 
                 case "failed":
-                    //item.setBackground(context.getDrawable(R.drawable.toc_fail));
+                    // item.setBackground(context.getDrawable(R.drawable.toc_fail));
 
                     chipEstado.setBackground(holder.itemView.getResources().getDrawable(R.drawable.failed_card));
                     statusText.setText("Fallido");
@@ -150,12 +163,12 @@ public class ListItemTocAdapter extends RecyclerView.Adapter<ListItemTocAdapter.
                 case "unknown":
                 case "not attempted":
                 default:
-                    //item.setBackground(context.getDrawable(R.drawable.toc_unknown));
+                    // item.setBackground(context.getDrawable(R.drawable.toc_unknown));
                     mTimelineView.setMarker(context.getDrawable(R.drawable.ic_icono_check_no_iniciado_37x37));
 
                     statusText.setText("No iniciado");
                     chipEstado.setBackground(holder.itemView.getResources().getDrawable(R.drawable.notstart_card));
-                    //picture.setColorFilter(R.color.black);
+                    // picture.setColorFilter(R.color.black);
                     break;
             }
 
@@ -182,7 +195,8 @@ public class ListItemTocAdapter extends RecyclerView.Adapter<ListItemTocAdapter.
             btnIrAOtros.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(context, cl.dl_distancia_a481.player_tablet.activities.EventsActivity.class);
+                    Intent intent = new Intent(context,
+                            cl.dl_distancia_a481.player_tablet.activities.EventsActivity.class);
                     context.startActivity(intent);
                 }
             });
@@ -191,10 +205,8 @@ public class ListItemTocAdapter extends RecyclerView.Adapter<ListItemTocAdapter.
 
     // Return the size of your dataset (invoked by the layout manager)
 
-
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
     // you provide access to all the views for a data item in a view holder
-
 
 }

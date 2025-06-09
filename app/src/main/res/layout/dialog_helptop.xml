@@ -2,18 +2,18 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="550dp"
-        android:paddingStart="32dp"
+    android:paddingStart="32dp"
     android:paddingEnd="32dp"
     android:paddingBottom="32dp"
     android:paddingTop="0dp"
     android:layout_height="370dp"
     android:background="@drawable/dialog_bg"
     android:gravity="top|center_horizontal"
-    >
+>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="70dp" 
+        android:layout_height="70dp"
         android:orientation="horizontal"
         android:gravity="top|center_vertical"
         android:layout_marginTop="0dp"
@@ -34,7 +34,7 @@
             android:lineHeight="24sp"
             android:paddingStart="8dp"
             android:paddingEnd="8dp"
-            android:layout_marginTop="0dp" 
+            android:layout_marginTop="0dp"
         />
 
         <ImageView
@@ -50,13 +50,26 @@
             android:layout_marginTop="15dp" />
     </LinearLayout>
 
-    <ImageView
-        android:id="@+id/soporte_img"
+    <ImageButton
+        android:id="@+id/soporte_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="30dp"
         android:src="@drawable/soporte"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="Botón Soporte"
+        android:padding="8dp" />
+    <ImageView
+        android:id="@+id/soporte_img2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:src="@drawable/soporte2"
         android:contentDescription="Imagen Soporte"
-        android:layout_marginTop="30dp" />
+        android:layout_gravity="start"
+        android:layout_marginTop="38dp" />
 
 
 </LinearLayout>

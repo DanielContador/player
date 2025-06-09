@@ -1,7 +1,11 @@
 package cl.dl_distancia_a481.player_tablet.activities;
+
 /**
  * Created by fcollado on 01-10-20.
  */
+import pl.droidsonroids.gif.GifDrawable;
+import pl.droidsonroids.gif.GifImageView;
+import java.io.IOException;
 
 import android.content.Context;
 import android.content.Intent;
@@ -11,7 +15,8 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
-import android.widget.ProgressBar;import android.widget.TextView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import cl.dl_distancia_a481.player_tablet.R;
 import cl.dl_distancia_a481.player_tablet.utils.DbHelper;
@@ -28,6 +33,15 @@ public class SplashScreen extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splashscreen);
+        GifImageView gifImageView = findViewById(R.id.gif);
+        try {
+            GifDrawable gifDrawable = new GifDrawable(getResources(), R.drawable.logo_400x400_optimizado_v3);
+            gifDrawable.setLoopCount(1); // Reproduce el GIF solo una vez
+            gifImageView.setImageDrawable(gifDrawable);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         progressBar = findViewById(R.id.determinateBar);
         progressBar.setScaleY(3f);
         percentageInfo = findViewById(R.id.progress_text);
@@ -38,7 +52,7 @@ public class SplashScreen extends AppCompatActivity {
         new LoadViewTask().execute();
     }
 
-    private class LoadViewTask extends AsyncTask<ExcelLib, Integer,Void>{
+    private class LoadViewTask extends AsyncTask<ExcelLib, Integer, Void> {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
@@ -50,36 +64,30 @@ public class SplashScreen extends AppCompatActivity {
         @Override
         protected Void doInBackground(ExcelLib... excelLibs) {
             ExcelLib excel = new ExcelLib(context);
-            try
-            {
-                //Get the current thread's token
-                synchronized (this)
-                {
-                    //Initialize an integer (that will act as a counter) to zero
+            try {
+                // Get the current thread's token
+                synchronized (this) {
+                    // Initialize an integer (that will act as a counter) to zero
                     int counter = 0;
                     boolean flag = false;
-                    //While the counter is smaller than four
-                    while(counter <= 100)
-                    {
+                    // While the counter is smaller than four
+                    while (counter <= 100) {
 
-
-                        //Wait 900 milliseconds
+                        // Wait 900 milliseconds
                         this.wait(120);
-                        if(!flag && counter == 20){
+                        if (!flag && counter == 20) {
                             excel.ReadExcel();
                             flag = true;
                             counter = 50;
                         }
-                        //Increment the counter
+                        // Increment the counter
                         counter++;
-                        //Set the current progress.
-                        //This value is going to be passed to the onProgressUpdate() method.
+                        // Set the current progress.
+                        // This value is going to be passed to the onProgressUpdate() method.
                         publishProgress(counter);
                     }
                 }
-            }
-            catch (InterruptedException e)
-            {
+            } catch (InterruptedException e) {
                 e.printStackTrace();
             }
             return null;
@@ -89,13 +97,13 @@ public class SplashScreen extends AppCompatActivity {
         protected void onProgressUpdate(Integer... values) {
             super.onProgressUpdate(values);
             progressBar.setProgress(values[0]);
-            percentageInfo.setText("Cargando " + (values[0]- 1) + "%");
+            percentageInfo.setText("Cargando " + (values[0] - 1) + "%");
         }
 
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
-            //progressBar.setVisibility(View.INVISIBLE);
+            // progressBar.setVisibility(View.INVISIBLE);
             Intent mainIntent = new Intent(SplashScreen.this, DashboardActivity.class);
             SplashScreen.this.startActivity(mainIntent);
             SplashScreen.this.finish();
@@ -112,6 +120,5 @@ public class SplashScreen extends AppCompatActivity {
             version.setVisibility(View.INVISIBLE);
         }
     }
-
 
 }

@@ -3,8 +3,10 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#1F51B5</color>
+    <color name="locked_tint">#B0B0B0</color> <!-- o el color que desees -->
 
-    <!--Colors 2.0-->
+    <!--Colors
+    2.0-->
     <color name="distButtons">#00A3AB</color>
     <color name="distOrangeDL">#CE6B00</color>
     <color name="distDeepColor">#D6F4F2</color>
@@ -14,7 +16,8 @@
     <color name="distNotStart">#868686</color>
     <color name="distInCourse">#0D8EFF</color>
     <color name="distComplete">#00A252</color>
-
+    <color name="icon_normal">#06354C</color> <!-- Color original -->
+    <color name="icon_selected">#FFFFFF</color> <!-- Cuando está activo -->
 
 
     <array name="reds">
@@ -356,7 +359,8 @@
     <color name="md_green_500_25">#404caf50</color>
     <color name="md_green_500_50">#804caf50</color>
     <color name="md_green_500_75">#c04caf50</color>
-    <!--light greens-->
+    <!--light
+    greens-->
     <array name="light_greens">
         <item>@color/md_light_green_500</item>
         <item>@color/md_light_green_50</item>
@@ -629,7 +633,8 @@
     <color name="md_black_1000_50">#80000000</color>
     <color name="md_black_1000_75">#c0000000</color>
     <color name="md_black_1000">#000000</color>
-    <!--blue grey-->
+    <!--blue
+    grey-->
     <array name="blue_greys">
         <item>@color/md_blue_grey_500</item>
         <item>@color/md_blue_grey_50</item>

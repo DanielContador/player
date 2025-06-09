@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/item_content"
     android:layout_width="match_parent"
     android:layout_height="450dp"
@@ -8,6 +8,8 @@
     android:layout_marginEnd="12dp"
     android:clickable="true"
     android:orientation="horizontal"
+    android:clipToPadding="false"
+    android:clipChildren="false"
     android:background="#E2E2E2">
 
 
@@ -15,14 +17,15 @@
     <LinearLayout
         android:id="@+id/horizontal_container"
         android:layout_width="match_parent"
+        android:clipChildren="false"
+        android:clipToPadding="false"
         android:layout_height="match_parent"
         android:orientation="horizontal">
 
         <!-- content_item cuadrado -->
         <RelativeLayout
             android:id="@+id/content_item"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_width="0dp" android:layout_height="match_parent"
             android:layout_weight="1"
             android:minWidth="0dp"
             android:minHeight="0dp"
@@ -56,14 +59,14 @@
                     android:layout_width="32dp"
                     android:layout_height="match_parent"
                     android:layout_alignParentEnd="true"
-                    android:text="1"                            
+                    android:text="1"
                     android:textColor="#262626"
                     android:textSize="60sp"
                     android:textStyle="bold"
                     android:background="@android:color/transparent" />
             </RelativeLayout>
 
-            <!-- Nuevo contenedor para barra de progreso debajo del número -->
+            <!-- Nuevo contenedor para  barra de progreso debajo del número -->
             <RelativeLayout
                 android:id="@+id/progress_container_item"
                 android:layout_width="327dp"
@@ -138,7 +141,7 @@
                     android:lineSpacingExtra="4sp"
                     android:gravity="top"
                     android:fontFamily="bevietnampro"
-                    />
+                />
             </RelativeLayout>
 
             <!-- Nuevo contenedor para el botón debajo del párrafo -->
@@ -171,13 +174,12 @@
                 android:layout_below="@+id/relativeStatus"
                 android:layout_centerInParent="true"
                 android:layout_marginStart="20dp"
-                >
+            >
 
 
-            <!-- Elimina el TextView de bienvenida de aquí -->
+                <!-- Elimina el TextView de bienvenida de aquí -->
             </RelativeLayout>
 
-            
 
             <!-- Eliminar este bloque completo -->
             <!--
@@ -200,19 +202,18 @@
             </RelativeLayout>
             -->
 
-                
-                
-            </RelativeLayout>
 
-            <RelativeLayout
-                android:id="@+id/content_item_eval"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="4dp"
-                android:background="@drawable/card_eval"
-                android:elevation="4dp"
-                android:padding="5dp"
-                android:visibility="gone">
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/content_item_eval"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:background="@drawable/card_eval"
+            android:elevation="4dp"
+            android:padding="5dp"
+            android:visibility="gone">
 
             <RelativeLayout
                 android:id="@+id/relativeEval"
@@ -296,6 +297,7 @@
                     android:textSize="15sp" />
             </RelativeLayout>
 
+
         </RelativeLayout>
 
         <!-- Nuevo contenedor derecho, por defecto oculto -->
@@ -305,18 +307,71 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_gravity="end"
-            android:background="#FFDDDD"
+            android:background="@android:color/transparent"
             android:visibility="gone"
             android:padding="16dp">
 
-            <TextView
-                android:id="@+id/right_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Texto de ejemplo"
-                android:textColor="#000"
-                android:textSize="18sp"
-                android:layout_centerInParent="true"/>
+            <androidx.cardview.widget.CardView
+                android:id="@+id/right_card"
+                android:layout_width="330dp"
+                android:layout_height="170dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:elevation="4dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="8dp">
+
+                <!-- Contenido dentro del CardView -->
+                <LinearLayout
+                    android:layout_width="300dp"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="16dp"
+                    android:gravity="start|top"
+                >
+
+                    <TextView
+                        android:id="@+id/textViewItemTitleRight"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Contenido de la tarjeta"
+                        android:textSize="20sp"
+                        android:gravity="start"
+                        android:layout_alignParentTop="true"
+                        android:fontFamily="bevietnampro"
+                        android:textStyle="bold"
+                        android:textColor="#333333"
+                    />
+
+                    
+                </LinearLayout>
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Posiciona el botón en la esquina inferior derecha -->
+    <ImageView
+        android:id="@+id/buttonright"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="12dp"
+        android:src="@drawable/buttonright"
+        android:contentDescription="Botón derecho" />
+</RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <ImageView
+                android:id="@+id/circulo_image"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_below="@id/right_card"
+                android:layout_marginTop="45dp"
+                android:layout_marginStart="120dp"
+                android:src="@drawable/circulo"
+                android:contentDescription="Imagen de círculo" />
         </RelativeLayout>
     </LinearLayout>
 

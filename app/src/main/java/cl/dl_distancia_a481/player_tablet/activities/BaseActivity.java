@@ -1,7 +1,14 @@
 package cl.dl_distancia_a481.player_tablet.activities;
+import android.widget.Button;
+import android.widget.Toast;
+import android.widget.ImageButton;
 
-
- import android.graphics.drawable.ColorDrawable;
+import cl.dl_distancia_a481.player_tablet.AppState;
+import android.widget.ProgressBar;
+import android.net.Uri;
+import java.util.List;
+import java.util.ArrayList;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.Color;
 import android.view.Window;
 import androidx.annotation.NonNull;
@@ -24,7 +31,6 @@ import android.view.Window;
 import android.widget.TextView;
 import android.widget.ImageView;
 
-
 import com.google.android.material.navigation.NavigationView;
 
 import java.io.IOException;
@@ -39,104 +45,264 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
     ActionBarDrawerToggle actionBarDrawerToggle;
     Toolbar toolbar;
     private DbHelper dbHelper;
+    private List<ImageButton> orderedButtons = new ArrayList<>();
+
+    private ImageButton btnHome;
+    private ImageButton selectedButton = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_base);
-        NavigationView navigationView = findViewById(R.id.nav_view);
         dbHelper = DbHelper.getHelper(this);
-        toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        drawerLayout = findViewById(R.id.drawer_layout);
+        setContentView(R.layout.activity_base);
 
-        // Solo la lógica de abrir el drawer con btnMenu
-        ImageButton btnMenu = findViewById(R.id.btnMenu);
-        if (btnMenu != null && drawerLayout != null) {
-            btnMenu.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    drawerLayout.openDrawer(GravityCompat.START);
-                }
-            });
-        }
+        // ImageButton selected = findViewById(AppState.selectedButtonId);
+        // if (selected != null) {
+        // selected.post(() -> selectButton(selected));
+        // }
 
-        // Lógica para navegar a DashboardActivity al presionar btnHome
-        ImageButton btnHome = findViewById(R.id.btnHome);
+        btnHome = findViewById(R.id.btnHome);
         if (btnHome != null) {
             btnHome.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    selectButton(btnHome);
                     Intent intent = new Intent(getBaseContext(), DashboardActivity.class);
                     startActivity(intent);
                 }
             });
-        }
 
-        // Deshabilita el gesto de abrir el drawer desde el borde
-        if (drawerLayout != null) {
-            drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
-        }
+            // // Selección inicial (ejecutado después de layout)
+            // btnHome.post(new Runnable() {
+            // @Override
+            // public void run() {
+            // selectButton(btnHome);
+            // }
+            // });
+            // }
 
-        actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        if (drawerLayout != null) {
-            drawerLayout.addDrawerListener(actionBarDrawerToggle);
-        }
-        actionBarDrawerToggle.syncState();
+            NavigationView navigationView = findViewById(R.id.nav_view);
+            dbHelper = DbHelper.getHelper(this);
+            toolbar = findViewById(R.id.toolbar);
+            setSupportActionBar(toolbar);
+            drawerLayout = findViewById(R.id.drawer_layout);
 
-        if (navigationView != null) {
-            navigationView.setNavigationItemSelectedListener(this);
-        }
+            // Solo la lógica de abrir el drawer con btnMenu
+            ImageButton btnMenu = findViewById(R.id.btnMenu);
+            if (btnMenu != null && drawerLayout != null) {
+                btnMenu.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    // public void onClick(View v) {
+                    // selectButton(btnMenu);
+                    // drawerLayout.openDrawer(GravityCompat.START);
+                    // }
 
-        //check for conditions to turn off and on the buttons
-        boolean checkBiblio = checkForBiblioteca("config");
-        if (checkBiblio){
-            Menu nav_Menu = navigationView.getMenu();
-            nav_Menu.findItem(R.id.nav_biblio).setVisible(false);
-        }
-        boolean checkNews = checkNews();
-        if (checkNews){
-            Menu nav_Menu = navigationView.getMenu();
-            nav_Menu.findItem(R.id.nav_news).setVisible(false);
-        }
-
-
-        ImageButton helpTop = findViewById(R.id.helptop);
-        helpTop.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showHelpTopDialog();
+                    public void onClick(View v) {
+                        selectButton(btnMenu);
+                        Intent intent = new Intent(getBaseContext(), EventsActivity.class);
+                        startActivity(intent);
+                    }
+                });
             }
-        });
 
-        ImageButton btnMenuInfo = findViewById(R.id.btnMenuInfo);
-        if (btnMenuInfo != null) {
-            btnMenuInfo.setOnClickListener(new View.OnClickListener() {
+            ImageView btnLogo = findViewById(R.id.logoPensamiento);
+            if (btnLogo != null && drawerLayout != null) {
+                btnLogo.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        drawerLayout.openDrawer(GravityCompat.START);
+                    }
+
+                });
+            }
+            // Lógica para navegar a DashboardActivity al presionar btnHome
+            ImageButton btnHome = findViewById(R.id.btnHome);
+            if (btnHome != null) {
+                btnHome.setOnClickListener(new View.OnClickListener() {
+
+                    @Override
+                    public void onClick(View v) {
+                        selectButton(btnHome);
+                        // selectButton(btnHome);
+                        Intent intent = new Intent(getBaseContext(), DashboardActivity.class);
+                        startActivity(intent);
+                    }
+                });
+            }
+            // Deshabilita el gesto de abrir el drawer desde el borde
+            if (drawerLayout != null) {
+                drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+            }
+
+            actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar,
+                    R.string.navigation_drawer_open,
+                    R.string.navigation_drawer_close);
+            if (drawerLayout != null) {
+                drawerLayout.addDrawerListener(actionBarDrawerToggle);
+            }
+            actionBarDrawerToggle.syncState();
+
+            if (navigationView != null) {
+                navigationView.setNavigationItemSelectedListener(this);
+            }
+
+            // check for conditions to turn off and on the buttons
+            boolean checkBiblio = checkForBiblioteca("config");
+            if (checkBiblio) {
+                Menu nav_Menu = navigationView.getMenu();
+                nav_Menu.findItem(R.id.nav_biblio).setVisible(false);
+            }
+            boolean checkNews = checkNews();
+            if (checkNews) {
+                Menu nav_Menu = navigationView.getMenu();
+                nav_Menu.findItem(R.id.nav_news).setVisible(false);
+            }
+
+            ImageButton helpTop = findViewById(R.id.helptop);
+            helpTop.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(getBaseContext(), MesaAyudaActivity.class);
-                    startActivity(intent);
+                    showHelpTopDialog();
                 }
             });
+
+            ImageButton btnMenuInfo = findViewById(R.id.btnMenuInfo);
+            if (btnMenuInfo != null) {
+                btnMenuInfo.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        selectButton(btnMenuInfo);
+                        Intent intent = new Intent(getBaseContext(), MesaAyudaActivity.class);
+                        startActivity(intent);
+                    }
+                });
+            }
+
+            orderedButtons.add(btnHome);
+            orderedButtons.add(btnMenu);
+            orderedButtons.add(btnMenuInfo);
+
+            int num = calculatePercentBase();
+            ProgressBar gauge = findViewById(R.id.totalProgressBar);
+            TextView percent = findViewById(R.id.totalProgress);
+            gauge.setProgress(num);
+            percent.setText(num + "%");
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        ImageButton toSelect = null;
+        Class<?> me = getClass(); // actividad que está visible
+
+        if (me == DashboardActivity.class) {
+            toSelect = btnHome; // índice 0
+        } else if (me == EventsActivity.class) {
+            toSelect = orderedButtons.size() > 1 ? orderedButtons.get(1) : null; // índice 1
+        } else if (me == MesaAyudaActivity.class) {
+            toSelect = orderedButtons.size() > 2 ? orderedButtons.get(2) : null; // índice 2
+        }
+
+        /* ── Fallback: si la vista no está asociada a ningún icono ────────── */
+        if (toSelect == null && AppState.selectedButtonId != 0) {
+            toSelect = findViewById(AppState.selectedButtonId);
+        }
+
+        if (toSelect != null) {
+            final ImageButton finalBtn = toSelect; // efectivamente final
+            toSelect.post(() -> selectButton(finalBtn));
+        }
+    }
+
+    private void selectButton(ImageButton button) {
+        ImageButton circuloBase = findViewById(R.id.circuloBase);
+        if (circuloBase == null)
+            return;
+
+        float centerX = circuloBase.getX() + circuloBase.getWidth() / 2f;
+        float centerY = circuloBase.getY() + circuloBase.getHeight() / 2f;
+
+        // Restaurar estilo de todos los botones (tamaño, color, z-index)
+        for (ImageButton b : orderedButtons) {
+            b.setZ(6f);
+            b.setColorFilter(getResources().getColor(R.color.icon_normal));
+            b.animate().scaleX(1f).scaleY(1f).setDuration(300).start();
+        }
+
+        // Calcular y animar nueva posición de cada botón
+        int selectedIndex = orderedButtons.indexOf(button);
+        float spacing = 200f;
+
+        for (int i = 0; i < orderedButtons.size(); i++) {
+            ImageButton b = orderedButtons.get(i);
+
+            float tx, ty;
+            if (i == selectedIndex) {
+                // Seleccionado: al centro
+                tx = centerX - b.getWidth() / 2f - b.getX();
+                ty = centerY - b.getHeight() / 2f - b.getY();
+                b.animate()
+                        .translationX(tx)
+                        .translationY(ty)
+                        .scaleX(1.1f)
+                        .scaleY(1.1f)
+                        .setDuration(300)
+                        .start();
+
+                b.setZ(10f);
+                b.setColorFilter(Color.WHITE);
+            } else {
+                // No seleccionados: desplazados hacia los lados y más abajo
+                int offsetIndex = i - selectedIndex;
+                tx = centerX + offsetIndex * spacing - b.getWidth() / 2f - b.getX();
+                ty = centerY - b.getHeight() / 2f - b.getY() + 70f;
+                b.animate()
+                        .translationX(tx)
+                        .translationY(ty)
+                        .setDuration(300)
+                        .start();
+            }
+        }
+
+        selectedButton = button;
+        AppState.selectedButtonId = button.getId();
     }
 
     private void showHelpTopDialog() {
         Dialog dialog = new Dialog(this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.dialog_helptop);
-    Window window = dialog.getWindow();
-    if (window != null) {
-        window.setBackgroundDrawable(
-                new ColorDrawable(android.graphics.Color.TRANSPARENT)
-        );
-    }
+        Window window = dialog.getWindow();
+        if (window != null) {
+            window.setBackgroundDrawable(
+                    new ColorDrawable(android.graphics.Color.TRANSPARENT));
+        }
 
         ImageView closeBtn = dialog.findViewById(R.id.dialog_close);
         closeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 dialog.dismiss();
+            }
+        });
+
+        ImageButton soporteBtn = dialog.findViewById(R.id.soporte_btn);
+        soporteBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_SEND);
+                intent.setType("message/rfc822");
+                intent.putExtra(Intent.EXTRA_EMAIL, new String[] { "soporte@dl.cl" });
+                intent.putExtra(Intent.EXTRA_SUBJECT, "Consulta de Soporte");
+
+                try {
+                    startActivity(Intent.createChooser(intent, "Enviar correo..."));
+                } catch (android.content.ActivityNotFoundException ex) {
+                    Toast.makeText(v.getContext(), "No se encontró una aplicación de correo.", Toast.LENGTH_SHORT)
+                            .show();
+                }
             }
         });
 
@@ -152,8 +318,6 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         super.onPostCreate(savedInstanceState);
         actionBarDrawerToggle.syncState();
     }
-
-
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
@@ -213,28 +377,29 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         AlertDialog dialog = builder.create();
         dialog.show();
 
-
     }
 
-    public void startActivityHelpDesk(){
+    public void startActivityHelpDesk() {
         Intent intent = new Intent(getBaseContext(), MesaAyudaActivity.class);
         startActivity(intent);
     }
-    public void startActivityDashboard(){
+
+    public void startActivityDashboard() {
         Intent intent = new Intent(getBaseContext(), DashboardActivity.class);
         startActivity(intent);
     }
-    public void startActivityNews(){
+
+    public void startActivityNews() {
         Intent intent = new Intent(getBaseContext(), NewsActivity.class);
         startActivity(intent);
     }
 
-    public void startActivityEvents(){
+    public void startActivityEvents() {
         Intent intent = new Intent(getBaseContext(), EventsActivity.class);
         startActivity(intent);
     }
 
-    public void startActivityBiblio(){
+    public void startActivityBiblio() {
         Intent intent = new Intent(getBaseContext(), BiblioActivity.class);
         startActivity(intent);
     }
@@ -251,7 +416,7 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 
-    //Check for components
+    // Check for components
     public boolean checkForBiblioteca(String path) {
         String[] list;
         try {
@@ -262,7 +427,7 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
                 for (String file : list) {
                     if (!checkForBiblioteca(path + "/" + file))
                         return false;
-                    else if(file.endsWith(".pdf")){
+                    else if (file.endsWith(".pdf")) {
                         return false;
                     }
                 }
@@ -301,5 +466,42 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         return true;
     }
 
+    /** Lógica original, pero privada para que nadie la sobreescriba */
+    private int calculatePercentBase() {
+        int total = 0, cant = 0;
+        Cursor cur = dbHelper.GetEvents("0");
+        if (cur != null && cur.moveToFirst()) {
+            do {
+                Cursor c2 = dbHelper.GetContents(cur.getInt(0), "0");
+                if (c2 != null && c2.moveToFirst()) {
+                    do {
+                        total += dbHelper.GetTotalPorcent(c2.getString(0));
+                    } while (c2.moveToNext());
+                    cant += c2.getCount();
+                    c2.close();
+                }
+            } while (cur.moveToNext());
+            cur.close();
+        }
+        return cant == 0 ? 0 : total / cant;
+    }
+
+    // private void selectButton(ImageButton button) {
+    // // Restaurar estado anterior
+    // if (selectedButton != null) {
+    // selectedButton.setBackgroundResource(R.drawable.circle_shape); // Fondo
+    // normal
+    // selectedButton.setColorFilter(getResources().getColor(R.color.icon_normal));
+    // // Tint normal
+    // }
+
+    // // Aplicar estado seleccionado
+    // button.setBackgroundResource(R.drawable.circle_shape_selected); // Fondo
+    // "activo"
+    // button.setColorFilter(getResources().getColor(R.color.icon_selected)); //
+    // Tint blanco
+
+    // selectedButton = button;
+    // }
 
 }

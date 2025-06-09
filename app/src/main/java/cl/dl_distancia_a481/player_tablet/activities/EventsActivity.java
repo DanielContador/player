@@ -1,6 +1,7 @@
 package cl.dl_distancia_a481.player_tablet.activities;
 
 import android.content.Context;
+import cl.dl_distancia_a481.player_tablet.AppState;
 
 import android.content.Intent;
 import android.database.Cursor;
@@ -21,14 +22,12 @@ import android.widget.TextView;
 
 import com.google.android.material.navigation.NavigationView;
 
-
 import java.io.File;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
 import java.util.Timer;
-
 
 import cl.dl_distancia_a481.player_tablet.R;
 import cl.dl_distancia_a481.player_tablet.recycler.adapters.ListCursesAdapter;
@@ -48,7 +47,10 @@ public class EventsActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        FrameLayout contentFrameLayout = findViewById(R.id.content_frame); //Remember this is the FrameLayout area within your activity_main.xml        getLayoutInflater().inflate(R.layout.activity_main, contentFrameLayout);
+        FrameLayout contentFrameLayout = findViewById(R.id.content_frame); // Remember this is the FrameLayout area
+                                                                           // within your activity_main.xml
+                                                                           // getLayoutInflater().inflate(R.layout.activity_main,
+                                                                           // contentFrameLayout);
         getLayoutInflater().inflate(R.layout.activity_events, contentFrameLayout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.getMenu().getItem(1).setChecked(true);
@@ -56,24 +58,28 @@ public class EventsActivity extends BaseActivity {
         getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
         context = this;
 
-
-        //Init BD Object
+        // Init BD Object
         dbHelper = DbHelper.getHelper(this);
 
-        //Setting UI components
+        // Setting UI components
         SetUI();
 
-        //Load Data
-        //ExcelLib excel = new ExcelLib(this);
-        //excel.ReadExcel();
+        // Load Data
+        // ExcelLib excel = new ExcelLib(this);
+        // excel.ReadExcel();
 
         CompleteList();
 
     }
 
-    //Setting UI components
-    public void SetUI() {
+    @Override
+    protected void onResume() {
+        AppState.currentActivityClass = EventsActivity.class;
+        super.onResume();
+    }
 
+    // Setting UI components
+    public void SetUI() {
 
         recyclerViewDesign();
     }
@@ -83,7 +89,8 @@ public class EventsActivity extends BaseActivity {
         recyclerView = findViewById(R.id.recyclerEvents);
 
         // Divider
-        //recyclerView.addItemDecoration(new DividerItemDecoration(getResources().getDrawable(android.R.drawable.divider_horizontal_bright)));
+        // recyclerView.addItemDecoration(new
+        // DividerItemDecoration(getResources().getDrawable(android.R.drawable.divider_horizontal_bright)));
 
         // improve performance if you know that changes in content
         // do not change the size of the RecyclerView
@@ -94,7 +101,6 @@ public class EventsActivity extends BaseActivity {
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
-
     }
 
     public void CompleteList() {
@@ -102,7 +108,6 @@ public class EventsActivity extends BaseActivity {
         SenceOtec so;
         int id, Situacion_final, Estado_nomina;
         int i = 0;
-
 
         Cursor cursor = dbHelper.GetEvents("0");
         if (cursor.moveToFirst()) {
@@ -120,10 +125,12 @@ public class EventsActivity extends BaseActivity {
                 Estado_nomina = cursor.getInt(10);
                 so = new SenceOtec(CodigoSence, RutOtect, ClaveOtec);
 
-                Event event = new Event(id, Name, Descripcion, ImagenName, so, FechaInicio, FechaTermino, Situacion_final, Estado_nomina);
+                Event event = new Event(id, Name, Descripcion, ImagenName, so, FechaInicio, FechaTermino,
+                        Situacion_final, Estado_nomina);
                 ArrayList<Content> cont = getContents(event);
-                Event event2 = new Event(id, Name, Descripcion, ImagenName, so, FechaInicio, FechaTermino, Situacion_final, Estado_nomina, cont);
-                //Add Event to List if Contain All Courses
+                Event event2 = new Event(id, Name, Descripcion, ImagenName, so, FechaInicio, FechaTermino,
+                        Situacion_final, Estado_nomina, cont);
+                // Add Event to List if Contain All Courses
                 if (ContainEvent(id, "0")) {
                     Events.add(event2);
                 }
@@ -134,20 +141,19 @@ public class EventsActivity extends BaseActivity {
 
         if (cursor.getCount() > 0) {
 
-            //Get new events first
-            //Collections.reverse(Events);
+            // Get new events first
+            // Collections.reverse(Events);
 
-            //Setting RecyclerViewAdapter
-            recyclerViewAdapter = new ListCursesAdapter(EventsActivity.this, Events, false);
+            // Setting RecyclerViewAdapter
+            recyclerViewAdapter = new ListCursesAdapter(EventsActivity.this, Events, true);
             recyclerView.setAdapter(recyclerViewAdapter);
             recyclerView.setVisibility(View.VISIBLE);
 
-
-            //Hide text for empty events for at least one event
+            // Hide text for empty events for at least one event
             TextView txt_empty = findViewById(R.id.empty_events);
             txt_empty.setVisibility(View.GONE);
         } else {
-            //Show text for empty events
+            // Show text for empty events
             recyclerView.setVisibility(View.GONE);
             TextView txt_empty = findViewById(R.id.empty_events);
             txt_empty.setVisibility(View.VISIBLE);
@@ -196,7 +202,7 @@ public class EventsActivity extends BaseActivity {
         boolean puede = true;
         ArrayList<Content> Contents = new ArrayList<Content>();
 
-        //Get Contents from DB
+        // Get Contents from DB
         Cursor cursor = dbHelper.GetContents(event.getid(), "0");
         if (cursor.moveToFirst()) {
             do {
@@ -215,7 +221,8 @@ public class EventsActivity extends BaseActivity {
                     puede = intentos < maxintentos;
                 }
                 Content content = new Content(id, event.getid(), Name, Descripcion, Path, id_curso,
-                        event.getSenceOtec().getCodigoSence(), puede, evalua, intentos, maxintentos, Puntaje, estado_contenido, situacion_final);
+                        event.getSenceOtec().getCodigoSence(), puede, evalua, intentos, maxintentos, Puntaje,
+                        estado_contenido, situacion_final);
                 puede = true;
                 Contents.add(content);
                 i++;
@@ -226,5 +233,3 @@ public class EventsActivity extends BaseActivity {
     }
 
 }
-
-

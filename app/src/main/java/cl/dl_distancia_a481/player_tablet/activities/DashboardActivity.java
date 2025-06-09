@@ -1,8 +1,11 @@
 package cl.dl_distancia_a481.player_tablet.activities;
+
 /**
  * Created by fcollado on 01-15-20.
  */
 import android.text.Html;
+import cl.dl_distancia_a481.player_tablet.AppState;
+
 import androidx.core.text.HtmlCompat;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -27,38 +30,37 @@ import cl.dl_distancia_a481.player_tablet.R;
 import cl.dl_distancia_a481.player_tablet.recycler.classes.News;
 import cl.dl_distancia_a481.player_tablet.utils.DbHelper;
 
-
 public class DashboardActivity extends BaseActivity {
-
 
     private DbHelper dbHelper;
     Context context;
-
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        FrameLayout contentFrameLayout = findViewById(R.id.content_frame); //Remember this is the FrameLayout area within your activity_main.xml        getLayoutInflater().inflate(R.layout.activity_main, contentFrameLayout);
+        FrameLayout contentFrameLayout = findViewById(R.id.content_frame); // Remember this is the FrameLayout area
+                                                                           // within your activity_main.xml
+                                                                           // getLayoutInflater().inflate(R.layout.activity_main,
+                                                                           // contentFrameLayout);
         getLayoutInflater().inflate(R.layout.content_main, contentFrameLayout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.getMenu().getItem(0).setChecked(true);
 
         context = this;
         dbHelper = DbHelper.getHelper(this);
-// Dentro de onCreate() o donde inicialices tu vista:
-TextView tv = findViewById(R.id.textViewItemTitle);
-tv.setText(HtmlCompat.fromHtml(
-    getString(R.string.title_training),
-    HtmlCompat.FROM_HTML_MODE_LEGACY
-));
-        //get the buttons
+        // Dentro de onCreate() o donde inicialices tu vista:
+        TextView tv = findViewById(R.id.textViewItemTitle);
+        tv.setText(HtmlCompat.fromHtml(
+                getString(R.string.title_training),
+                HtmlCompat.FROM_HTML_MODE_LEGACY));
+        // get the buttons
         RelativeLayout biblio = findViewById(R.id.biblioBton);
         RelativeLayout news = findViewById(R.id.newsBton);
         RelativeLayout video = findViewById(R.id.videoView);
-        //check for conditions to turn off and on the buttons
+        // check for conditions to turn off and on the buttons
         boolean checkForBiblio = checkForBibliotecaInDashboard("config");
-        if (checkForBiblio){
+        if (checkForBiblio) {
             biblio.setVisibility(View.INVISIBLE);
             Menu nav_Menu = navigationView.getMenu();
             nav_Menu.findItem(R.id.nav_biblio).setVisible(false);
@@ -67,7 +69,7 @@ tv.setText(HtmlCompat.fromHtml(
         if (checkForVideo)
             video.setVisibility(View.INVISIBLE);
         boolean checkForNews = checkNewsInDashboard();
-        if (checkForNews){
+        if (checkForNews) {
             news.setVisibility(View.INVISIBLE);
             Menu nav_Menu = navigationView.getMenu();
             nav_Menu.findItem(R.id.nav_news).setVisible(false);
@@ -78,16 +80,16 @@ tv.setText(HtmlCompat.fromHtml(
         percent.setText(num + "%");
         gauge.setProgress(num);
         RelativeLayout mainBton = findViewById(R.id.item_activity);
-        if(num == 100)
+        if (num == 100)
             mainBton.setBackground(getResources().getDrawable(R.drawable.ic_background_mainbton_completed));
 
-mainBton.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View v) {
-        Intent intent = new Intent(getBaseContext(), EventsActivity.class); // O la actividad que corresponda
-        startActivity(intent);
-    }
-});
+        mainBton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getBaseContext(), EventsActivity.class); // O la actividad que corresponda
+                startActivity(intent);
+            }
+        });
         news.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -96,16 +98,12 @@ mainBton.setOnClickListener(new View.OnClickListener() {
             }
         });
 
-        
-        
-
         video.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 showAlert();
             }
         });
-
 
         biblio.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -138,13 +136,20 @@ mainBton.setOnClickListener(new View.OnClickListener() {
         }
     }
 
+    @Override
+    protected void onResume() {
+        AppState.currentActivityClass = DashboardActivity.class;
+        super.onResume();
+    }
+
     public void showAlert() {
 
         VideoView videoView = new VideoView(this);
-        //String videoPath = "android.resource://" + getPackageName() + "/" + R.raw.video;
+        // String videoPath = "android.resource://" + getPackageName() + "/" +
+        // R.raw.video;
         videoView.setVideoPath("content://cl.dl_distancia_a481.player_tablet.activities/video.mp4");
-        //Uri uri = Uri.parse(videoPath);
-        //videoView.setVideoURI(uri);
+        // Uri uri = Uri.parse(videoPath);
+        // videoView.setVideoURI(uri);
         videoView.start();
 
         MediaController mediaController = new MediaController(this);
@@ -164,16 +169,15 @@ mainBton.setOnClickListener(new View.OnClickListener() {
         alertDialog.show();
     }
 
-
     @Override
     public void onBackPressed() {
-        //super.onBackPressed();
+        // super.onBackPressed();
         return;
     }
 
     public int calculatePercent() {
         int pertcentTotal = 0;
-        int cantCursos=0;
+        int cantCursos = 0;
         Cursor cursorCont = null;
         Cursor cursor = dbHelper.GetEvents("0");
         if (cursor.moveToFirst()) {
@@ -186,14 +190,13 @@ mainBton.setOnClickListener(new View.OnClickListener() {
                     cantCursos += cursorCont.getCount();
                 }
 
-
             } while (cursor.moveToNext());
         }
 
         return pertcentTotal / cantCursos;
     }
 
-    //Check for components
+    // Check for components
     public boolean checkForBibliotecaInDashboard(String path) {
         String[] list;
         try {
@@ -204,13 +207,13 @@ mainBton.setOnClickListener(new View.OnClickListener() {
                 for (String file : list) {
                     if (!checkForBibliotecaInDashboard(path + "/" + file))
                         return false;
-                    else if(file.endsWith(".pdf")){
+                    else if (file.endsWith(".pdf")) {
                         return false;
                     }
                 }
             }
         } catch (IOException e) {
-           return false;
+            return false;
         }
         return true;
     }
@@ -224,7 +227,7 @@ mainBton.setOnClickListener(new View.OnClickListener() {
                 for (String file : list) {
                     if (!checkVideoInDashboard(path + "/" + file))
                         return false;
-                    else if(file.endsWith(".mp4")){
+                    else if (file.endsWith(".mp4")) {
                         return false;
                     }
                 }
@@ -257,7 +260,7 @@ mainBton.setOnClickListener(new View.OnClickListener() {
 
         if (cursor.getCount() > 0) {
 
-         return false;
+            return false;
 
         }
         return true;
