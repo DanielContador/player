@@ -3,4 +3,20 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
+    <dimen name="dashboard_card_margin_top">5dp</dimen>
+    <dimen name="decoration_offset_x">12dp</dimen>
+    <dimen name="decoration_offset_y">-25dp</dimen>
+    <dimen name="button_height">30dp</dimen>
+    <dimen name="margin_top">10dp</dimen>
+    <dimen name="dashboard_margin_top">10dp</dimen>
+    <dimen name="card_corner_radius">46dp</dimen>
+    <dimen name="progressmargin_top">-16dp</dimen>
+    <dimen name="iniciarmi_margin_top">40dp</dimen>
+    <!-- values/dimens.xml -->
+    <dimen name="bottom_nav_spacing">80dp</dimen>
+    <dimen name="bottom_nav_offset">25dp</dimen>
+    <dimen name="corner_radius">8dp</dimen>
+
+    
+
 </resources>

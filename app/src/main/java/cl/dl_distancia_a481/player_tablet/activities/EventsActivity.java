@@ -145,10 +145,36 @@ public class EventsActivity extends BaseActivity {
             // Collections.reverse(Events);
 
             // Setting RecyclerViewAdapter
-            recyclerViewAdapter = new ListCursesAdapter(EventsActivity.this, Events, true);
+               // cambiar True: vista lineal, False: Vista tarjetas (enAdd commentMore actions
+            // listcontentsadapter.java cambiar variable)
+            recyclerViewAdapter = new ListCursesAdapter(EventsActivity.this, Events, false);
             recyclerView.setAdapter(recyclerViewAdapter);
             recyclerView.setVisibility(View.VISIBLE);
 
+            if (Events.size() == 1) {
+                Event onlyEvent = Events.get(0);
+                ArrayList<Content> contents = onlyEvent.getContents();
+                if (contents.size() == 1) {
+                    Content onlyContent = contents.get(0);
+
+                    int progreso = dbHelper.GetTotalPorcent(String.valueOf(onlyContent.getid())); // DbHelper
+
+                    Bundle b = new Bundle();
+                    b.putInt("IdContent", onlyContent.getid());
+                    b.putInt("IdEvent", onlyContent.getId_evento());
+                    b.putString("Path", onlyContent.getPath());
+                    b.putInt("IdCurso", onlyContent.getId_curso());
+                    b.putInt("isEval", onlyContent.getEvalua());
+                    b.putInt("Progreso", progreso);
+                    b.putInt("Number", 1); // ya que es el único
+
+                    Intent intent = new Intent(getBaseContext(), TocActivity.class);
+                    intent.putExtras(b);
+                    startActivity(intent);
+                    finish(); // evita volver a esta pantalla
+                    return;
+                }
+            }
             // Hide text for empty events for at least one event
             TextView txt_empty = findViewById(R.id.empty_events);
             txt_empty.setVisibility(View.GONE);

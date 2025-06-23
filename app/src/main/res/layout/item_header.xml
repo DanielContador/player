@@ -1,0 +1,60 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/miconte_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginLeft="100dp"
+        android:layout_marginRight="100dp"
+        android:layout_marginTop="65dp"
+        android:weightSum="1">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginStart="16dp">
+
+            <LinearLayout
+                android:id="@+id/btn_ir_a_otros"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:background="?attr/selectableItemBackground"
+                android:padding="4dp"
+                android:clickable="true"
+                android:focusable="true">
+
+                <ImageView
+                    android:id="@+id/left_arrow"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/iraotros" />
+
+                <TextView
+                    android:id="@+id/ir_a_otros"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Ir a otros"
+                    android:textColor="#1CB1D1"
+                    android:textSize="18sp"
+                    android:gravity="center_vertical"
+                    android:layout_marginStart="8dp"
+                    android:background="@android:color/transparent"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                />
+            </LinearLayout>
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/miconte_image"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:src="@drawable/miconte"
+            android:layout_gravity="end|center_vertical" />
+    </LinearLayout>

@@ -1,8 +1,13 @@
 package cl.dl_distancia_a481.player_tablet.activities;
+
 import android.widget.Button;
 import android.widget.Toast;
 import android.widget.ImageButton;
-
+import android.util.DisplayMetrics;
+import android.util.TypedValue;
+import android.content.res.Configuration;
+import android.graphics.PorterDuff;
+import androidx.core.content.ContextCompat;
 import cl.dl_distancia_a481.player_tablet.AppState;
 import android.widget.ProgressBar;
 import android.net.Uri;
@@ -55,7 +60,33 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         dbHelper = DbHelper.getHelper(this);
         setContentView(R.layout.activity_base);
+        TextView titlePrefix = findViewById(R.id.textViewItemTitlePrefix);
+        TextView titleSuffix = findViewById(R.id.textViewItemTitleSuffix);
 
+        // Calcula los valores
+        int total = 0, cant = 0;
+        Cursor cur = dbHelper.GetEvents("0");
+        if (cur != null && cur.moveToFirst()) {
+            do {
+                Cursor c2 = dbHelper.GetContents(cur.getInt(0), "0");
+                if (c2 != null && c2.moveToFirst()) {
+                    do {
+                        total += dbHelper.GetTotalPorcent(c2.getString(0));
+                    } while (c2.moveToNext());
+                    cant += c2.getCount();
+                    c2.close();
+                }
+            } while (cur.moveToNext());
+            cur.close();
+        }
+
+        // Mostrar conteo
+        // 3) Construye el texto dinámico y sepáralo en los dos TextViews:
+        int completedCount = (cant == 0 ? 0 : total / 100);
+        String prefixText = completedCount + "/" + cant + " contenidos ";
+        titlePrefix.setText(prefixText);
+        // la palabra “completados” siempre va en el TextView de color verde
+        titleSuffix.setText("completados");
         // ImageButton selected = findViewById(AppState.selectedButtonId);
         // if (selected != null) {
         // selected.post(() -> selectButton(selected));
@@ -99,8 +130,13 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
 
                     public void onClick(View v) {
                         selectButton(btnMenu);
-                        Intent intent = new Intent(getBaseContext(), EventsActivity.class);
-                        startActivity(intent);
+                        if (AppState.goToCombinedCourses) {
+                            Intent intent = new Intent(getBaseContext(), CombinedCoursesActivity.class);
+                            startActivity(intent);
+                        } else {
+                            Intent intent = new Intent(getBaseContext(), EventsActivity.class);
+                            startActivity(intent);
+                        }
                     }
                 });
             }
@@ -217,55 +253,72 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void selectButton(ImageButton button) {
+
         ImageButton circuloBase = findViewById(R.id.circuloBase);
         if (circuloBase == null)
             return;
 
-        float centerX = circuloBase.getX() + circuloBase.getWidth() / 2f;
-        float centerY = circuloBase.getY() + circuloBase.getHeight() / 2f;
+        /* ───────── 1) Centro de circuloBase ───────── */
+        int[] cirLoc = new int[2];
+        circuloBase.getLocationOnScreen(cirLoc);
+        float centerX = cirLoc[0] + circuloBase.getWidth() * 0.5f;
+        float centerY = cirLoc[1] + circuloBase.getHeight() * 0.5f;
 
-        // Restaurar estilo de todos los botones (tamaño, color, z-index)
+        /* ───────── 2) Medidas desde dimens.xml ───────── */
+        float spacingPx = getResources().getDimension(R.dimen.bottom_nav_spacing); // separación horizontal
+        float offsetYPx = getResources().getDimension(R.dimen.bottom_nav_offset); // bajada de no-seleccionados
+
+        /* ───────── 3) Resetear estilo ───────── */
+        int normalColor = ContextCompat.getColor(this, R.color.icon_normal);
         for (ImageButton b : orderedButtons) {
-            b.setZ(6f);
-            b.setColorFilter(getResources().getColor(R.color.icon_normal));
+            b.setTranslationX(0f);
+            b.setTranslationY(0f);
+            b.setZ(10f);
+            b.setColorFilter(normalColor, PorterDuff.Mode.SRC_IN);
             b.animate().scaleX(1f).scaleY(1f).setDuration(300).start();
         }
 
-        // Calcular y animar nueva posición de cada botón
-        int selectedIndex = orderedButtons.indexOf(button);
-        float spacing = 200f;
+        /* ───────── 4) Distribuir manteniendo orden Home-Menu-Info ───────── */
+        int selectedIndex = orderedButtons.indexOf(button); // 0, 1 ó 2
+        int[] btnLoc = new int[2];
 
         for (int i = 0; i < orderedButtons.size(); i++) {
             ImageButton b = orderedButtons.get(i);
 
-            float tx, ty;
-            if (i == selectedIndex) {
-                // Seleccionado: al centro
-                tx = centerX - b.getWidth() / 2f - b.getX();
-                ty = centerY - b.getHeight() / 2f - b.getY();
-                b.animate()
-                        .translationX(tx)
-                        .translationY(ty)
-                        .scaleX(1.1f)
-                        .scaleY(1.1f)
-                        .setDuration(300)
-                        .start();
+            /*
+             * dirección = desplazamiento respecto al seleccionado
+             * Home-Menu-Info -> índices 0-1-2
+             * Ej. seleccionado = 2 (Info): direcciones -2, -1, 0
+             */
+            int direction = i - selectedIndex;
 
+            /* destino horizontal y vertical */
+            float targetX = centerX + direction * spacingPx;
+            float targetY = centerY + ((i == selectedIndex) ? 0f : offsetYPx); // no-seleccionados más abajo
+
+            /* calcular delta de traslación */
+            b.getLocationOnScreen(btnLoc);
+            float btnCenterX = btnLoc[0] + b.getWidth() * 0.5f;
+            float btnCenterY = btnLoc[1] + b.getHeight() * 0.5f;
+
+            float tx = targetX - btnCenterX;
+            float ty = targetY - btnCenterY;
+
+            /* animar */
+            b.animate()
+                    .translationX(tx).translationY(ty)
+                    .setDuration(300)
+                    .start();
+
+            /* resaltar botón seleccionado */
+            if (i == selectedIndex) {
+                b.animate().scaleX(1.1f).scaleY(1.1f).setDuration(300).start();
                 b.setZ(10f);
-                b.setColorFilter(Color.WHITE);
-            } else {
-                // No seleccionados: desplazados hacia los lados y más abajo
-                int offsetIndex = i - selectedIndex;
-                tx = centerX + offsetIndex * spacing - b.getWidth() / 2f - b.getX();
-                ty = centerY - b.getHeight() / 2f - b.getY() + 70f;
-                b.animate()
-                        .translationX(tx)
-                        .translationY(ty)
-                        .setDuration(300)
-                        .start();
+                b.setColorFilter(ContextCompat.getColor(this, R.color.icon_selected), PorterDuff.Mode.SRC_IN);
             }
         }
 
+        /* ───────── 5) Guardar estado ───────── */
         selectedButton = button;
         AppState.selectedButtonId = button.getId();
     }
@@ -330,7 +383,12 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
                 return true;
             case R.id.nav_learning:
                 drawer.closeDrawer(GravityCompat.START);
-                startActivityEvents();
+                if (AppState.goToCombinedCourses) {
+                    Intent intent = new Intent(getBaseContext(), CombinedCoursesActivity.class);
+                    startActivity(intent);
+                } else {
+                    startActivityEvents();
+                }
                 return true;
             case R.id.nav_news:
                 drawer.closeDrawer(GravityCompat.START);

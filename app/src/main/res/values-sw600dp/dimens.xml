@@ -1,0 +1,14 @@
+<!-- app/src/main/res/values-sw600dp/dimens.xml -->
+<resources>
+    <!-- Margen superior mayor en pantallas ≥600dp -->
+    <dimen name="dashboard_card_margin_top">40dp</dimen>
+    <dimen name="card_corner_radius">120dp</dimen>
+    <dimen name="iniciarmi_margin_top">100dp</dimen>
+    <dimen name="decoration_offset_x">18dp</dimen>
+    <dimen name="decoration_offset_y">-45dp</dimen>
+    <dimen name="bottom_nav_spacing">140dp</dimen>
+    <dimen name="bottom_nav_offset">25dp</dimen>
+    <dimen name="corner_radius">8dp</dimen>
+
+
+</resources>

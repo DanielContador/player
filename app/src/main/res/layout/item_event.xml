@@ -5,8 +5,10 @@
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
     card_view:cardCornerRadius="6dp"
+    card_view:cardUseCompatPadding="false"
+    card_view:cardElevation="0dp"  
     android:background="#E2E2E2"
-    card_view:cardElevation="4dp">
+    >
 
     <ScrollView
         android:layout_width="match_parent"

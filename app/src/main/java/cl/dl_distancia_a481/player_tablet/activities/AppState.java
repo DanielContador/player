@@ -5,4 +5,6 @@ public class AppState {
 
     public static Class<?> currentActivityClass = null;
 
+    // Nueva variable para controlar navegación
+    public static boolean goToCombinedCourses = false;
 }

@@ -1,0 +1,19 @@
+<!-- res/layout/item_footer.xml -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp">
+
+    <!-- Imagen de fondo que conserva proporciones -->
+    <ImageView
+        android:layout_width="350dp"
+    android:layout_height="wrap_content"
+    android:src="@drawable/fin"
+        android:layout_marginTop="1dp"
+    android:scaleType="fitCenter"
+    android:adjustViewBounds="true"
+    android:layout_gravity="center" />
+
+    <!-- Texto "FIN" superpuesto centrado -->
+
+</FrameLayout>

@@ -1,6 +1,6 @@
 <resources>
 
-    <string name="app_name">a</string>
+    <string name="app_name">Tecnicas de Salud Mental</string>
     <string name="title_activity_login_academia">Sign in</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>

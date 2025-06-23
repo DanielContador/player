@@ -30,10 +30,12 @@ import cl.dl_distancia_a481.player_tablet.utils.DbHelper;
 
 import static xdroid.toaster.Toaster.toast;
 
+import com.google.android.material.textview.MaterialTextView;
+
 public class ListContentsAdapter extends RecyclerView.Adapter<ListContentsAdapter.ViewHolder> {
 
     // Variable para controlar el valor por defecto de vertical
-    public static final boolean DEFAULT_VERTICAL = true;
+    public static final boolean DEFAULT_VERTICAL = false;
 
     private ArrayList<Content> listcontents;
     Context context;
@@ -82,26 +84,17 @@ public class ListContentsAdapter extends RecyclerView.Adapter<ListContentsAdapte
         final boolean isLocked = vertical && position > 0
                 && calculatePercent(String.valueOf(listcontents.get(position - 1).getid())) < 100;
 
-
         final boolean firstItemIncomplete = vertical
-        && calculatePercent(String.valueOf(listcontents.get(position).getid())) < 100;
-
+                && calculatePercent(String.valueOf(listcontents.get(position).getid())) < 100;
 
         TextView textViewTitle;
 
         RelativeLayout item_lect = holder.view.findViewById(R.id.content_item);
-        RelativeLayout button_enter = holder.view.findViewById(R.id.button_container);
+        MaterialTextView button_enter = holder.view.findViewById(R.id.button_text);
         RelativeLayout item_eval = holder.view.findViewById(R.id.content_item_eval);
-        View progressContainer = holder.view.findViewById(R.id.progress_container_item);
         item_lect.setBackgroundColor(holder.view.getResources().getColor(android.R.color.white));
         button_enter.setVisibility(View.VISIBLE);
 
-        if (!vertical) {
-            progressContainer.setVisibility(View.VISIBLE);
-        } else {
-            progressContainer.setVisibility(View.GONE);
-
-        }
         // NUEVO: Referencia al nuevo contenedor derecho
         RelativeLayout rightContainer = holder.view.findViewById(R.id.right_container);
 
@@ -193,97 +186,12 @@ public class ListContentsAdapter extends RecyclerView.Adapter<ListContentsAdapte
         }
 
         TextView itemNumber = holder.itemView.findViewById(R.id.item_number);
-        itemNumber.setText(String.valueOf(position + 1));
+        itemNumber.setText(String.format("%02d", position + 1));
         textViewTitle = holder.view.findViewById(R.id.textViewItemTitle);
         textViewTitle.setText(listcontents.get(position).getNombre());
         TextView textViewItemTitleRight = holder.view.findViewById(R.id.textViewItemTitleRight);
         textViewItemTitleRight.setText(listcontents.get(position).getNombre());
         // NUEVO: Referencia al fondo como imagen
-        ImageView bgLeftImage = holder.view.findViewById(R.id.bg_left_image);
-
-        // Cambiar fondo si vertical es true
-        if (vertical && item_lect != null) {
-            // cambiar orden si es par o no
-            if (vertical && (position + 1) % 2 == 0 && horizontalContainer != null && item_lect != null
-                    && rightContainer != null) {
-                horizontalContainer.removeAllViews();
-                horizontalContainer.addView(rightContainer);
-                horizontalContainer.addView(item_lect);
-                bgLeftImage.setImageResource(R.drawable.bg_right);
-                bgLeftImage.setScaleType(ImageView.ScaleType.FIT_CENTER);
-                bgLeftImage.setScaleX(5.7f);
-                bgLeftImage.setScaleY(5.7f);
-
-                RelativeLayout.LayoutParams lp = (RelativeLayout.LayoutParams) bgLeftImage.getLayoutParams();
-
-                // ❶ Quitar reglas que la pegan al borde derecho
-                lp.removeRule(RelativeLayout.ALIGN_PARENT_END);
-                lp.removeRule(RelativeLayout.ALIGN_PARENT_RIGHT);
-
-                // ❷ Anclar la imagen al lado izquierdo / START
-                lp.addRule(RelativeLayout.ALIGN_PARENT_START);
-                lp.addRule(RelativeLayout.ALIGN_PARENT_TOP);
-
-                // ❸ Establecer marginTop de 100 dp
-                int topMarginPx = (int) TypedValue.applyDimension(
-                        TypedValue.COMPLEX_UNIT_DIP, 30,
-                        holder.view.getResources().getDisplayMetrics());
-                lp.topMargin = topMarginPx;
-
-                bgLeftImage.setLayoutParams(lp);
-                // Asegurar que ningún padre lo recorte
-                ViewParent parent = bgLeftImage.getParent();
-                while (parent instanceof ViewGroup) {
-                    ((ViewGroup) parent).setClipChildren(false);
-                    ((ViewGroup) parent).setClipToPadding(false);
-                    parent = ((ViewGroup) parent).getParent();
-                }
-
-            } else if (horizontalContainer != null && item_lect != null && rightContainer != null) {
-                horizontalContainer.removeAllViews();
-                horizontalContainer.addView(item_lect);
-                horizontalContainer.addView(rightContainer);
-                bgLeftImage.setImageResource(R.drawable.bg_left);
-
-                ViewGroup.LayoutParams imgParams = bgLeftImage.getLayoutParams();
-                if (imgParams instanceof ViewGroup.MarginLayoutParams) {
-                    ViewGroup.MarginLayoutParams marginParams = (ViewGroup.MarginLayoutParams) imgParams;
-
-                    // Cambiar tamaño
-                    marginParams.width = (int) TypedValue.applyDimension(
-                            TypedValue.COMPLEX_UNIT_DIP, 900, holder.view.getResources().getDisplayMetrics());
-                    marginParams.height = (int) TypedValue.applyDimension(
-                            TypedValue.COMPLEX_UNIT_DIP, 900, holder.view.getResources().getDisplayMetrics());
-
-                    // Cambiar marginStart
-                    marginParams.setMarginStart((int) TypedValue.applyDimension(
-                            TypedValue.COMPLEX_UNIT_DIP, 100, holder.view.getResources().getDisplayMetrics()));
-                    marginParams.bottomMargin = (int) TypedValue.applyDimension(
-                            TypedValue.COMPLEX_UNIT_DIP, 200, holder.view.getResources().getDisplayMetrics());
-                    bgLeftImage.setLayoutParams(marginParams);
-
-                }
-
-                // Asegúrate de castear correctamente para poder modificar márgenes
-                if (imgParams instanceof ViewGroup.MarginLayoutParams) {
-                    ViewGroup.MarginLayoutParams marginParams = (ViewGroup.MarginLayoutParams) imgParams;
-
-                    // Cambiar tamaño
-                    marginParams.width = (int) TypedValue.applyDimension(
-                            TypedValue.COMPLEX_UNIT_DIP, 900, holder.view.getResources().getDisplayMetrics());
-                    marginParams.height = (int) TypedValue.applyDimension(
-                            TypedValue.COMPLEX_UNIT_DIP, 900, holder.view.getResources().getDisplayMetrics());
-
-                    // Cambiar marginStart
-                    marginParams.setMarginStart((int) TypedValue.applyDimension(
-                            TypedValue.COMPLEX_UNIT_DIP, 100, holder.view.getResources().getDisplayMetrics()));
-                    marginParams.bottomMargin = (int) TypedValue.applyDimension(
-                            TypedValue.COMPLEX_UNIT_DIP, 200, holder.view.getResources().getDisplayMetrics());
-                    bgLeftImage.setLayoutParams(marginParams);
-                }
-            }
-
-        }
 
         if (!vertical) {
             item_lect.setBackgroundColor(holder.view.getResources().getColor(android.R.color.white));
@@ -321,75 +229,11 @@ public class ListContentsAdapter extends RecyclerView.Adapter<ListContentsAdapte
         }
         ImageView ButtonRight = holder.view.findViewById(R.id.buttonright);
 
-        if (bgLeftImage != null) {
-            if (vertical) {
-                bgLeftImage.setVisibility(View.VISIBLE);
-
-                if (isLocked) {
-                    ButtonRight.setVisibility(View.GONE);
-                    bgLeftImage.setColorFilter(holder.view.getResources().getColor(R.color.locked_tint),
-                            android.graphics.PorterDuff.Mode.SRC_IN);
-
-
-                } else {
-                    bgLeftImage.clearColorFilter(); // reset
-                }
-            } else {
-                bgLeftImage.setVisibility(View.GONE);
-            }
-        }
         // item_lect.setBackground(holder.view.getResources().getDrawable(R.drawable.bg_left));
         // // Quitar esto
 
-        ViewGroup.LayoutParams params = item_lect.getLayoutParams();
-        params.width = (int) TypedValue.applyDimension(
-                TypedValue.COMPLEX_UNIT_DIP,
-                3,
-                holder.view.getResources().getDisplayMetrics());
-        params.height = (int) TypedValue.applyDimension(
-                TypedValue.COMPLEX_UNIT_DIP,
-                500,
-                holder.view.getResources().getDisplayMetrics());
-        item_lect.setLayoutParams(params);
-        // Mostrar el contenedor derecho y ajustar tamaño cuadrado
-        if (rightContainer != null) {
-            if (vertical) {
-                rightContainer.setVisibility(View.VISIBLE);
-            } else {
-                rightContainer.setVisibility(View.GONE);
-            }
-        }
-        if (itemNumber != null) {
-            ViewGroup.LayoutParams numberParams = itemNumber.getLayoutParams();
-            if (numberParams instanceof RelativeLayout.LayoutParams) {
-                RelativeLayout.LayoutParams relParams = (RelativeLayout.LayoutParams) numberParams;
-                // Limpiar ambas alineaciones primero
-                relParams.removeRule(RelativeLayout.ALIGN_PARENT_START);
-                relParams.removeRule(RelativeLayout.ALIGN_PARENT_END);
 
-                if (vertical) {
-                    relParams.addRule(RelativeLayout.ALIGN_PARENT_START);
-                } else {
-                    relParams.addRule(RelativeLayout.ALIGN_PARENT_END);
-                }
-                itemNumber.setLayoutParams(relParams);
-            }
-        } else {
-            // Ocultar la imagen de fondo
-            if (bgLeftImage != null) {
-                bgLeftImage.setVisibility(View.GONE);
-            }
-            // Ocultar el contenedor derecho y dejar layout normal
-            if (rightContainer != null) {
-                rightContainer.setVisibility(View.GONE);
-            }
-            // Restaurar tamaño original de content_item
-            if (params != null) {
-                params.width = ViewGroup.LayoutParams.MATCH_PARENT;
-                params.height = ViewGroup.LayoutParams.MATCH_PARENT;
-                item_lect.setLayoutParams(params);
-            }
-        }
+     
 
         final Bundle b = new Bundle();
         RelativeLayout item = holder.view.findViewById(R.id.item_content);

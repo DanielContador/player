@@ -8,17 +8,32 @@
         <item name="colorAccent">#3EBFAC</item>
     </style>
 
+    <style name="NoRippleButton" parent="Widget.AppCompat.Button">
+        <item name="android:background">#11ADCF</item> <!-- celeste -->
+        <item name="android:backgroundTint">@android:color/transparent</item>
+        <item name="android:foreground">@null</item>
+        <item name="android:stateListAnimator">@null</item> <!-- para animación -->
+        <item name="android:clickable">true</item>
+    </style>
+
+
     <style name="AppThemeSplash" parent="Theme.AppCompat.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/md_falcon_500</item>
+        <item name="colorPrimary">
+        @color/md_falcon_500</item>
         <item name="colorPrimaryDark">@color/md_black_1000_50</item>
-        <item name="colorAccent">@color/md_falcon_A400</item>
-        <item name="colorControlHighlight">@color/md_falcon_500_25</item>​
-        <item name="colorControlNormal">@color/md_black_1000_50</item>
-        <item name="colorSwitchThumbNormal">@color/md_grey_200</item>
-        <item name="android:colorForeground">@color/md_black_1000_75</item>
-        <item name="windowActionModeOverlay">true</item>
-        <item name="actionModeBackground">@color/md_falcon_500</item>
+        <item
+            name="colorAccent">@color/md_falcon_A400</item>
+        <item name="colorControlHighlight">
+        @color/md_falcon_500_25</item>​ <item name="colorControlNormal">@color/md_black_1000_50</item>
+        <item
+            name="colorSwitchThumbNormal">@color/md_grey_200</item>
+        <item
+            name="android:colorForeground">@color/md_black_1000_75</item>
+        <item
+            name="windowActionModeOverlay">true</item>
+        <item name="actionModeBackground">
+        @color/md_falcon_500</item>
     </style>
 
     <style name="AppTheme.NoActionBar" parent="Theme.MaterialComponents.Light.NoActionBar">
@@ -33,6 +48,12 @@
         <item name="android:windowFullscreen">true</item>
         <item name="android:windowContentOverlay">@null</item>
     </style>
+
+    <style name="RoundedImage" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">46dp</item>
+    </style>
+
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
@@ -58,8 +79,4 @@
     <style name="PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 
-
-
-
 </resources>
-

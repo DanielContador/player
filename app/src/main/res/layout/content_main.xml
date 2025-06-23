@@ -2,272 +2,256 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:orientation="vertical" android:background="#E2E2E2"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/dashboard_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E2E2E2"
     tools:context=".activities.DashboardActivity">
-    <RelativeLayout android:id="@+id/relativeLayout2" android:layout_width="match_parent"
-        android:layout_height="wrap_content" android:layout_marginStart="200dp"
-        android:layout_marginTop="20dp" android:layout_marginEnd="200dp"
-        app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
 
-
-    </RelativeLayout>
-    <RelativeLayout android:id="@+id/event_cardView" android:layout_width="match_parent"
-        android:layout_height="wrap_content" android:layout_marginStart="20dp"
-        android:layout_marginTop="40dp" android:background="@android:color/transparent"
-        app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/relativeLayout2">
-        <RelativeLayout android:id="@+id/item_activity" android:layout_width="1100dp"
-            android:layout_height="400dp" android:layout_margin="4dp"
-            android:background="@android:color/transparent" android:padding="5dp"
-        >
-            <ImageView android:id="@+id/imageViewImage" android:layout_width="wrap_content"
-                android:layout_height="400dp" android:layout_alignParentTop="true"
-                android:layout_marginStart="50dp" android:layout_marginEnd="30dp"
-                android:src="@drawable/imagencap" />
-            <!-- Reemplazado el TextView por un ImageView para mostrar la imagen 'iniciarmi' -->
-            <ImageView
-                android:id="@+id/imageViewIniciarMi"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="90dp"
-                android:layout_marginBottom="10dp"
-                android:layout_toEndOf="@+id/imageViewImage"
-                android:layout_marginStart="-70dp"
-                android:src="@drawable/iniciarmi" />
-            <TextView
-                android:id="@+id/textoa"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/imageViewIniciarMi"
-                android:layout_alignStart="@id/imageViewIniciarMi"
-                android:layout_marginTop="8dp"
-                android:text="Hola! Aquí encontrarás todas las herramientas para desempeñar tus funciones"
-                android:textSize="24sp"
-                android:fontFamily="font/bevietnampro"
-                android:lineSpacingExtra="2sp"
-                android:textColor="#00213B" />
-            <RelativeLayout
-                android:id="@+id/frame_1"
-                android:layout_width="374dp"
-                android:layout_height="38dp"
-                android:layout_below="@id/textoa"
-                android:layout_marginTop="40dp"
-                android:layout_alignStart="@id/imageViewIniciarMi"
-                android:background="@drawable/frame_1"
-                android:clickable="true"
-                android:focusable="true" />
-
-            <!-- Contenedor para barra de progreso y porcentaje, alineado abajo -->
-        </RelativeLayout>
-    </RelativeLayout>
-    <RelativeLayout
-        android:id="@+id/progress_container"
-        android:layout_width="match_parent"
+    <!-- Margen horizontal dinámico (5% / 95%) -->
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_start"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/event_cardView"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="-8dp">
-        <!-- ↑↑↑ usa constraint para que quede debajo de item_activity/event_cardView -->
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.05" />
 
-        <ProgressBar
-            android:id="@+id/totalProgressBar"
-            android:layout_width="900dp"
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.95" />
+
+    <!-- Tarjeta de contenido principal -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/card_container"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/gl_start"
+        app:layout_constraintEnd_toEndOf="@id/gl_end"
+        android:clipChildren="false"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="@dimen/dashboard_card_margin_top"
+        android:padding="8dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/mainbackground"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintDimensionRatio="298:190"
+            app:layout_constraintWidth_percent="0.6"
+            android:background="@drawable/rounded_corners"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+        >
+            <!-- Decoración detrás, 110% de tamaño y desplazada -->
+            <ImageView
+                android:id="@+id/mainbackground2"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintWidth_percent="0.85"
+                app:layout_constraintHeight_percent="0.85"
+                android:translationX="@dimen/decoration_offset_x"
+                android:translationY="@dimen/decoration_offset_y"
+                android:scaleType="centerCrop"
+                android:src="@drawable/mainbackground" />
+
+            <!-- Imagen principal, siempre a 100% y centrada -->
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/mainimage"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintWidth_percent="0.7"
+                app:layout_constraintHeight_percent="0.7"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:shapeAppearanceOverlay="@style/RoundedImage"
+                android:scaleType="centerCrop"
+                android:src="@drawable/mainimage" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <!-- Imagen “Iniciar Mi” -->
+        <ImageView
+            android:id="@+id/imageViewIniciarMi"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-            android:layout_marginTop="0dp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginEnd="30dp"
-            android:progress="50"
-            android:progressTint="@color/distProgress"
-        />
+            app:layout_constraintStart_toEndOf="@id/mainbackground"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/mainbackground"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="@dimen/iniciarmi_margin_top"
+            android:src="@drawable/iniciarmi" />
+
+        <!-- Texto descriptivo -->
         <TextView
-            android:id="@+id/totalProgress"
-            android:layout_width="900dp"
+            android:id="@+id/textoa"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_below="@id/totalProgressBar"
+            app:layout_constraintStart_toStartOf="@id/imageViewIniciarMi"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/imageViewIniciarMi"
+            android:layout_marginTop="8dp"
+            android:text="Hola! Aquí encontrarás todas las herramientas para desempeñar tus funciones"
+            android:textSize="16sp"
+            android:lineSpacingExtra="2sp"
+            android:textColor="#00213B" />
+
+        <FrameLayout
+            android:id="@+id/frame_1"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/button_height"
+            app:layout_constraintStart_toStartOf="@+id/imageViewIniciarMi"
+            app:layout_constraintEnd_toEndOf="@id/gl_end"
+            app:layout_constraintTop_toBottomOf="@+id/textoa"
+            android:layout_marginTop="@dimen/dashboard_margin_top"
+            android:background="@drawable/frame_1" android:clickable="true" android:focusable="true"
+            android:foreground="?attr/selectableItemBackground"
+            app:layout_constraintWidth_percent="0.3">
+
+            <TextView
+                android:id="@+id/frame_1_text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="Comenzar"
+                android:textSize="9sp"
+                android:textColor="#FFFFFF" />
+        </FrameLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- Barra de progreso -->
+    <ProgressBar
+        android:id="@+id/totalProgressBar"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/gl_start"
+        app:layout_constraintEnd_toEndOf="@id/gl_end"
+        app:layout_constraintTop_toBottomOf="@+id/card_container"
+        android:layout_marginTop="@dimen/progressmargin_top"
+        android:progress="50"
+        android:progressTint="@color/distProgress" />
+
+    <TextView
+        android:id="@+id/totalProgress"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/totalProgressBar"
+        app:layout_constraintEnd_toEndOf="@id/totalProgressBar"
+        app:layout_constraintTop_toBottomOf="@id/totalProgressBar"
+        android:layout_marginTop="-5dp"
+        android:gravity="center"
+        android:text="50%"
+        android:textSize="10sp"
+        android:textColor="#00213B" />
+
+    <!-- Fila de botones: Mis Artículos / Biblioteca / Video -->
+    <!-- Cadena horizontal para repartirlos equitativamente -->
+    <RelativeLayout
+        android:id="@+id/newsBton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_button_cont"
+        android:padding="5dp"
+        android:elevation="8dp"
+        app:layout_constraintStart_toStartOf="@id/gl_start"
+        app:layout_constraintEnd_toStartOf="@id/biblioBton"
+        app:layout_constraintTop_toBottomOf="@id/totalProgress"
+        app:layout_constraintHorizontal_chainStyle="spread">
+
+        <ImageView
+            android:id="@+id/newsIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="2dp"
-            android:gravity="center"
-            android:text="50%"
-            android:textColor="#00213B"
-            android:fontFamily="@font/bevietnampro"
-            android:textSize="18sp"
-            android:textStyle="normal"
-            android:fontWeight="500"
-        />
-    </RelativeLayout>
-    <RelativeLayout android:id="@+id/newsBton" android:layout_width="wrap_content"
-        android:layout_height="wrap_content" android:layout_alignParentStart="true"
-        android:background="@drawable/ic_button_cont" android:elevation="8dp" android:padding="5dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/event_cardView"
-        app:layout_constraintTop_toBottomOf="@+id/event_cardView">
-        <ImageView android:id="@+id/newsIcon" android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:layout_centerInParent="true"
-            android:layout_margin="20dp" android:src="@drawable/icono_articulos_48x48" />
-        <TextView android:id="@+id/newsTitle" android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:layout_below="@+id/newsIcon"
-            android:layout_centerHorizontal="true" android:layout_marginTop="16dp"
-            android:layout_marginBottom="10dp" android:paddingStart="10dp" android:paddingEnd="10dp"
-            android:text="Mis Artículos" android:textColor="@color/md_white_1000"
-            android:textSize="20sp" />
-    </RelativeLayout>
-    <RelativeLayout android:id="@+id/biblioBton" android:layout_width="150dp"
-        android:layout_height="wrap_content" android:background="@drawable/ic_button_cont"
-        android:elevation="8dp" android:padding="5dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/videoView"
-        app:layout_constraintStart_toEndOf="@+id/newsBton"
-        app:layout_constraintTop_toBottomOf="@+id/event_cardView">
-        <ImageView android:id="@+id/biblioIcon" android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:layout_centerInParent="true"
-            android:layout_margin="20dp" android:src="@drawable/icono_bliblioteca_48x48" />
-        <TextView android:id="@+id/biblioTitle" android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:layout_below="@+id/biblioIcon"
-            android:layout_centerHorizontal="true" android:layout_marginTop="16dp"
-            android:layout_marginBottom="10dp" android:paddingStart="10dp" android:paddingEnd="10dp"
-            android:text="Biblioteca" android:textColor="@color/md_white_1000"
-            android:textSize="20sp" />
-    </RelativeLayout>
-    <RelativeLayout android:id="@+id/videoView" android:layout_width="150dp"
-        android:layout_height="wrap_content" android:background="@drawable/ic_button_cont"
-        android:elevation="8dp" android:padding="5dp" android:layout_alignParentEnd="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/event_cardView"
-        app:layout_constraintTop_toBottomOf="@+id/event_cardView">
-        <ImageView android:id="@+id/videoIcon" android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:layout_centerInParent="true"
-            android:layout_margin="20dp" android:src="@drawable/icono_video_48x48" />
-        <TextView android:id="@+id/videoTitle" android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:layout_below="@+id/videoIcon"
-            android:layout_centerHorizontal="true" android:layout_marginTop="16dp"
-            android:layout_marginBottom="10dp" android:paddingStart="10dp" android:paddingEnd="10dp"
-            android:text="Video" android:textColor="@color/md_white_1000" android:textSize="20sp" />
-    </RelativeLayout>
-    <!--<RelativeLayout
-    android:id="@+id/linearLayout" android:layout_width="match_parent"
-    android:layout_height="wrap_content" android:layout_margin="200dp"
-    android:layout_marginTop="8dp" app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/event_cardView" tools:layout_editor_absoluteX="200dp">
+            android:layout_margin="20dp"
+            android:src="@drawable/icono_articulos_48x48" />
 
+        <TextView
+            android:id="@+id/newsTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/newsIcon"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="16dp"
+            android:text="Mis Artículos"
+            android:textSize="20sp"
+            android:textColor="@color/md_white_1000" />
+    </RelativeLayout>
 
+    <RelativeLayout
+        android:id="@+id/biblioBton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_button_cont"
+        android:padding="5dp"
+        android:elevation="8dp"
+        app:layout_constraintStart_toEndOf="@id/newsBton"
+        app:layout_constraintEnd_toStartOf="@id/videoView"
+        app:layout_constraintTop_toTopOf="@id/newsBton">
 
-    </RelativeLayout>-->
+        <ImageView
+            android:id="@+id/biblioIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="20dp"
+            android:src="@drawable/icono_bliblioteca_48x48" />
+
+        <TextView
+            android:id="@+id/biblioTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/biblioIcon"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="16dp"
+            android:text="Biblioteca"
+            android:textSize="20sp"
+            android:textColor="@color/md_white_1000" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/videoView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_button_cont"
+        android:padding="5dp"
+        android:elevation="8dp"
+        app:layout_constraintStart_toEndOf="@id/biblioBton"
+        app:layout_constraintEnd_toEndOf="@id/gl_end"
+        app:layout_constraintTop_toTopOf="@id/newsBton">
+
+        <ImageView
+            android:id="@+id/videoIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="20dp"
+            android:src="@drawable/icono_video_48x48" />
+
+        <TextView
+            android:id="@+id/videoTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/videoIcon"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="16dp"
+            android:text="Video"
+            android:textSize="20sp"
+            android:textColor="@color/md_white_1000" />
+    </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-<!--
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
-android:layout_width="match_parent" android:layout_height="match_parent"
-android:orientation="vertical" android:background="@drawable/ic_background"
-app:layout_behavior="@string/appbar_scrolling_view_behavior"
-tools:context=".activities.DashboardActivity">
-
-        <RelativeLayout android:id="@+id/mainLayout" android:layout_width="match_parent"
-android:layout_height="wrap_content">
-
-            <com.google.android.material.button.MaterialButton android:id="@+id/material_button"
-android:layout_width="753dp" android:layout_height="87dp" android:layout_centerInParent="true"
-android:layout_marginTop="8dp" android:layout_marginBottom="8dp"
-android:text="@string/text_button_capac" android:textAlignment="viewStart"
-android:textAllCaps="false" android:textSize="30sp" app:backgroundTint="@color/distButtons"
-app:icon="@drawable/icono_capacitacion_48x48" />
-
-        </RelativeLayout>
-
-
-        <RelativeLayout android:layout_width="match_parent" android:layout_height="match_parent">
-
-            <RelativeLayout android:layout_width="753dp" android:layout_height="wrap_content"
-android:layout_centerHorizontal="true" android:layout_marginTop="8dp">
-
-                <com.google.android.material.card.MaterialCardView android:id="@+id/cardView"
-android:layout_width="250dp" android:layout_height="wrap_content" android:layout_marginTop="5dp"
-android:background="@color/distGray" android:backgroundTint="@color/distGray"
-android:elevation="10dp" app:layout_constraintBottom_toBottomOf="parent"
-app:layout_constraintStart_toStartOf="parent" app:layout_constraintVertical_bias="0.0">
-
-                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
-android:orientation="vertical">
-
-                        <ImageView android:id="@+id/dashboardImageNews" android:layout_width="match_parent"
-android:layout_height="wrap_content" android:adjustViewBounds="true" android:paddingLeft="6dp"
-android:paddingTop="6dp" android:paddingRight="6dp" android:paddingBottom="6dp"
-android:scaleType="centerCrop" />
-
-                        <TextView android:id="@+id/dashboardTitleNews" android:layout_width="match_parent"
-android:layout_height="wrap_content" android:paddingStart="6dp" android:paddingEnd="6dp"
-android:textSize="15sp" android:textStyle="bold" />
-
-                        <TextView android:id="@+id/dashboardSubtitleNews" android:layout_width="match_parent"
-android:layout_height="wrap_content" android:paddingStart="6dp" android:paddingEnd="6dp"
-android:textSize="12sp" />
-
-                        <com.google.android.material.button.MaterialButton android:id="@+id/last_news_button"
-android:layout_width="match_parent" android:layout_height="53dp" android:layout_marginLeft="6dp"
-android:layout_marginRight="6dp" android:text="@string/see_more"
-app:backgroundTint="@color/distButtons" app:icon="@drawable/icono_articulos_48x48"
-app:iconGravity="textStart" />
-
-                    </LinearLayout>
-
-
-                </com.google.android.material.card.MaterialCardView>
-
-                <RelativeLayout android:id="@+id/buttons_layout" android:layout_width="match_parent"
-android:layout_height="wrap_content" android:layout_toEndOf="@+id/cardView"
-android:backgroundTint="@color/distGray" android:orientation="vertical" android:paddingLeft="10dp">
-
-                    <com.google.android.material.button.MaterialButton android:id="@+id/news_button"
-android:layout_width="480dp" android:layout_height="wrap_content"
-android:layout_centerHorizontal="true" android:text="@string/see_news"
-android:textAlignment="viewStart" android:textAllCaps="false" android:textSize="20sp"
-app:backgroundTint="@color/distButtons" app:icon="@drawable/icono_articulos_48x48" />
-
-                    <com.google.android.material.button.MaterialButton android:id="@+id/material_button2"
-android:layout_width="480dp" android:layout_height="wrap_content"
-android:layout_below="@+id/news_button" android:layout_centerHorizontal="true"
-android:layout_marginTop="11dp" android:text="@string/mesa_de_ayuda"
-android:textAlignment="viewStart" android:textAllCaps="false" android:textSize="20sp"
-app:backgroundTint="@color/distButtons" app:icon="@drawable/icono_mesa_ayuda_48x48" />
-
-                    <RelativeLayout android:layout_width="480dp" android:layout_height="wrap_content"
-android:layout_below="@+id/material_button2" android:layout_centerHorizontal="true"
-android:layout_marginTop="11dp" android:background="@drawable/layout_bg"
-android:backgroundTint="@color/distGray">
-
-                        <TextView android:id="@+id/progress_text" android:layout_width="match_parent"
-android:layout_height="wrap_content" android:layout_alignParentStart="true"
-android:layout_alignParentEnd="true" android:gravity="center"
-android:text="@string/res_men_global_de_avance" android:textSize="20sp" />
-
-                        <pl.pawelkleczkowski.customgauge.CustomGauge android:id="@+id/gauge" android:layout_width="100dp"
-android:layout_height="100dp" android:layout_below="@id/progress_text"
-android:layout_centerHorizontal="true" app:gaugeEndValue="100"
-app:gaugePointEndColor="@color/distOrangeDL" app:gaugePointStartColor="@color/distOrangeDL"
-app:gaugeStartAngle="135" app:gaugeStartValue="0" app:gaugeStrokeCap="ROUND"
-app:gaugeStrokeColor="@color/md_grey_400" app:gaugeStrokeWidth="10dp" app:gaugeSweepAngle="270" />
-
-                        <TextView android:id="@+id/progress_num" android:layout_width="wrap_content"
-android:layout_height="wrap_content" android:layout_below="@+id/progress_text"
-android:layout_alignParentStart="true" android:layout_alignParentEnd="true"
-android:layout_marginStart="0dp" android:layout_marginTop="43dp" android:layout_marginEnd="0dp"
-android:gravity="center" android:text="0%" android:textSize="20sp" android:textStyle="bold" />
-
-
-                    </RelativeLayout>
-
-
-                </RelativeLayout>
-
-            </RelativeLayout>
-
-        </RelativeLayout>
-
-
-    </LinearLayout>-->

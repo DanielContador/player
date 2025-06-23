@@ -33,7 +33,7 @@
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="60dp">
+                android:layout_marginTop="25dp">
 
                 <ImageView
                     android:id="@+id/imageViewSobreNos"
@@ -43,18 +43,6 @@
                     android:adjustViewBounds="true"
                     android:contentDescription="@string/sobre_nosot" />
 
-                <TextView
-                    android:id="@+id/textViewDevelopers"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Los desarrolladores de esta aplicación y cómo contactarlos"
-                    android:textColor="#00213B"
-                    android:textStyle="bold"
-                    android:textSize="24sp"
-                    android:fontFamily="font/bevietnampro"
-                    android:lineHeight="32sp"
-                    android:gravity="center"
-                    android:layout_marginTop="16dp" />
             </LinearLayout>
 
             <!-- ========= DL Group ========= -->

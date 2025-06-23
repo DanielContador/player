@@ -3,14 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/item_content"
     android:layout_width="match_parent"
-    android:layout_height="450dp"
+    android:layout_height="wrap_content"
     android:layout_marginStart="12dp"
     android:layout_marginEnd="12dp"
     android:clickable="true"
     android:orientation="horizontal"
     android:clipToPadding="false"
     android:clipChildren="false"
-    android:background="#E2E2E2">
+    android:clipToOutline="true"
+    android:outlineProvider="background"
+    android:background="@drawable/rounded_background"
+>
 
 
     <!-- Nuevo LinearLayout horizontal para content_item y right_container -->
@@ -19,191 +22,110 @@
         android:layout_width="match_parent"
         android:clipChildren="false"
         android:clipToPadding="false"
-        android:layout_height="match_parent"
+        android:clipToOutline="true"
+        android:outlineProvider="background"
+        android:background="@drawable/rounded_background"
+        android:layout_height="wrap_content"
         android:orientation="horizontal">
 
         <!-- content_item cuadrado -->
-        <RelativeLayout
-            android:id="@+id/content_item"
-            android:layout_width="0dp" android:layout_height="match_parent"
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:minHeight="300dp"
             android:layout_weight="1"
-            android:minWidth="0dp"
-            android:minHeight="0dp"
-            android:layout_gravity="start"
-            android:elevation="4dp"
-            android:padding="5dp">
+            android:padding="5dp"
+            app:cardCornerRadius="@dimen/corner_radius"
+            app:cardElevation="0dp"
+            app:cardUseCompatPadding="true"
+            app:cardBackgroundColor="#E2E2E2">
 
-
-            <!-- NUEVO: Imagen de fondo para bg_left, inicialmente invisible -->
-            <ImageView
-                android:id="@+id/bg_left_image"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:scaleType="fitCenter"
-                android:src="@drawable/bg_left"
-                android:visibility="gone"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp" />
-
-
-            <!-- Contenedor centrado para el número del ítem -->
+            <!-- Contenido interno dentro de la CardView -->
             <RelativeLayout
-                android:id="@+id/item_number_container"
-                android:layout_width="327dp"
-                android:layout_height="80dp"
-                android:layout_centerHorizontal="true"
-                android:layout_alignParentTop="true">
+                android:id="@+id/content_item"
+                android:padding="18dp"
+                android:layout_width="match_parent"
+                android:minHeight="300dp"
+                android:layout_height="wrap_content">
 
+                <!-- Número de ítem -->
                 <TextView
                     android:id="@+id/item_number"
-                    android:layout_width="32dp"
-                    android:layout_height="match_parent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
                     android:text="1"
                     android:textColor="#262626"
-                    android:textSize="60sp"
-                    android:textStyle="bold"
-                    android:background="@android:color/transparent" />
-            </RelativeLayout>
+                    android:textSize="50sp"
+                    android:textStyle="bold" />
 
-            <!-- Nuevo contenedor para  barra de progreso debajo del número -->
-            <RelativeLayout
-                android:id="@+id/progress_container_item"
-                android:layout_width="327dp"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/item_number_container"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="0dp">
-
+                <!-- Barra de progreso -->
                 <ProgressBar
                     android:id="@+id/totalProgressBar_item"
-                    android:layout_width="327dp"
-                    android:layout_height="wrap_content"
                     style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="0dp"
-                    android:layout_marginBottom="4dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/item_number"
+                    android:layout_marginTop="4dp"
                     android:progress="50"
-                    android:progressTint="@color/distProgress"
-                />
+                    android:progressTint="@color/distProgress" />
+
                 <TextView
                     android:id="@+id/totalProgress_item"
-                    android:layout_width="327dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/totalProgressBar_item"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginTop="-8dp"
-                    android:gravity="center"
+                    android:layout_marginTop="2dp"
                     android:text="50%"
                     android:textColor="#1B1B41"
-                    android:textSize="12sp"
-                    android:textStyle="normal"
-                />
-            </RelativeLayout>
+                    android:textSize="12sp" />
 
-            <!-- Nuevo contenedor para el texto de bienvenida debajo de la barra de progreso -->
-            <RelativeLayout
-                android:id="@+id/welcome_container"
-                android:layout_width="327dp"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/progress_container_item"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="8dp">
-
+                <!-- Título -->
                 <TextView
                     android:id="@+id/textViewItemTitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="start"
-                    android:text="Fundamentos de la Legislación Previsional de Protecion Social en Chile"
+                    android:layout_below="@id/totalProgress_item"
+                    android:layout_marginTop="8dp"
+                    android:padding="4dp"
+                    android:text="Fundamentos de la Legislación Previsional…"
                     android:textColor="#333333"
-                    android:textStyle="bold"
-                    android:fontFamily="bevietnampro"
-                    android:textSize="20sp" />
-            </RelativeLayout>
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
 
-            <!-- Nuevo contenedor para el párrafo debajo del texto de bienvenida -->
-            <RelativeLayout
-                android:id="@+id/paragraph_container"
-                android:layout_width="327dp"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/welcome_container"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="8dp">
-
+                <!-- Descripción -->
                 <TextView
                     android:id="@+id/paragraph"
-                    android:layout_width="327dp"
-                    android:layout_height="72dp"
-                    android:text="Explicación blablaExplicación labl aExplicac ión blablblablaEx plicación bl abla"
-                    android:textSize="16sp"
-                    android:textColor="#4C4C4D"
-                    android:lineSpacingExtra="4sp"
-                    android:gravity="top"
-                    android:fontFamily="bevietnampro"
-                />
-            </RelativeLayout>
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/textViewItemTitle"
+                    android:layout_marginTop="4dp"
+                    android:padding="4dp"
+                    android:text="Explicación bla bla bla…"
+                    android:textSize="12sp"
+                    android:lineSpacingExtra="4sp" />
 
-            <!-- Nuevo contenedor para el botón debajo del párrafo -->
-            <RelativeLayout
-                android:id="@+id/button_container"
-                android:layout_width="330dp"
-                android:layout_height="40dp"
-                android:layout_below="@id/paragraph_container"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="25dp"
-                android:background="@drawable/button">
-
+                <!-- Botón “Entrar” -->
                 <TextView
                     android:id="@+id/button_text"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/paragraph"
+                    android:layout_marginTop="8dp"
+                    android:padding="10dp"
+                    android:background="@drawable/button"
                     android:gravity="center"
                     android:text="Entrar"
                     android:textColor="#FF9500"
                     android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:fontFamily="bevietnampro"
-                />
+                    android:textStyle="bold" />
+
             </RelativeLayout>
+        </com.google.android.material.card.MaterialCardView>
 
-            <RelativeLayout
-                android:id="@+id/relative"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/relativeStatus"
-                android:layout_centerInParent="true"
-                android:layout_marginStart="20dp"
-            >
-
-
-                <!-- Elimina el TextView de bienvenida de aquí -->
-            </RelativeLayout>
-
-
-            <!-- Eliminar este bloque completo -->
-            <!--
-            <RelativeLayout
-                android:id="@+id/item_status"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentStart="true"
-                android:background="@drawable/complete_card"
-                android:padding="5dp">
-
-                <TextView
-                    android:id="@+id/statusText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:text="No Intentado"
-                    android:textColor="@color/black" />
-            </RelativeLayout>
-            -->
-
-
-        </RelativeLayout>
 
         <RelativeLayout
             android:id="@+id/content_item_eval"
@@ -343,23 +265,23 @@
                         android:textColor="#333333"
                     />
 
-                    
-                </LinearLayout>
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
 
-    <!-- Posiciona el botón en la esquina inferior derecha -->
-    <ImageView
-        android:id="@+id/buttonright"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_margin="12dp"
-        android:src="@drawable/buttonright"
-        android:contentDescription="Botón derecho" />
-</RelativeLayout>
+                </LinearLayout>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <!-- Posiciona el botón en la esquina inferior derecha -->
+                    <ImageView
+                        android:id="@+id/buttonright"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_margin="12dp"
+                        android:src="@drawable/buttonright"
+                        android:contentDescription="Botón derecho" />
+                </RelativeLayout>
 
             </androidx.cardview.widget.CardView>
 
