@@ -46,6 +46,7 @@
                 android:padding="18dp"
                 android:layout_width="match_parent"
                 android:minHeight="300dp"
+                android:maxHeight="300dp"
                 android:layout_height="wrap_content">
 
                 <!-- Número de ítem -->
@@ -94,7 +95,9 @@
                     android:text="Fundamentos de la Legislación Previsional…"
                     android:textColor="#333333"
                     android:textSize="17sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:maxLines="2"
+                    android:ellipsize="end" />
 
                 <!-- Descripción -->
                 <TextView

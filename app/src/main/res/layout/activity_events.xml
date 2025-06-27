@@ -54,20 +54,7 @@
                 android:paddingTop="-9dp"
                 android:paddingBottom="8dp">
 
-                <TextView
-                    android:id="@+id/centered_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Conozca nuevas herramientas y conocimientos para su trabajo"
-                    android:textColor="#06241B"
-                    android:textAlignment="center"
-                    android:gravity="center"
-                    android:textSize="18sp"
-                    android:fontFamily="@font/bevietnampro"
-                    android:lineSpacingExtra="8dp"
-                    android:fontWeight="400"
-                    android:layout_centerInParent="true"
-                    />
+                
             </RelativeLayout>
 
             <androidx.recyclerview.widget.RecyclerView

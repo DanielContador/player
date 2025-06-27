@@ -122,10 +122,11 @@
             <TextView
                 android:id="@+id/frame_1_text"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_horizontal"
                 android:text="Comenzar"
-                android:textSize="9sp"
+                android:textSize="@dimen/button_text_size"
                 android:textColor="#FFFFFF" />
         </FrameLayout>
 

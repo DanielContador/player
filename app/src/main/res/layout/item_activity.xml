@@ -1,166 +1,171 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical">
-
-
+    android:layout_height="wrap_content">
     <LinearLayout
-        android:id="@+id/item_activity_full"
-        android:layout_width="match_parent"
-        android:layout_height="230dp"
-        android:layout_marginLeft="100dp"
-        android:layout_marginRight="100dp"
-        android:layout_marginTop="50dp"
-        android:orientation="horizontal">
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintWidth_percent="0.75"
+        android:orientation="vertical">
 
-        <com.github.vipulasri.timelineview.TimelineView
-            android:id="@+id/timeline"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            app:endLineColor="@color/distNotStart"
-            app:lineStyle="dash"
-            app:lineWidth="3dp"
-            app:marker="@android:color/transparent"
-            app:startLineColor="@color/distNotStart" />
-
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/content_cardView"
+        <!-- Contenedor PRINCIPAL convertido a ConstraintLayout -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/item_activity_full"
             android:layout_width="match_parent"
-            android:layout_height="230dp"
-            android:layout_gravity="center_vertical"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="10dp"
-            app:cardCornerRadius="4dp"
-            app:cardElevation="4dp">
+            android:layout_height="wrap_content">
 
-            <RelativeLayout
-                android:id="@+id/item_activity"
-                android:layout_width="match_parent"
-                android:layout_height="230dp"
-                android:elevation="8dp"
-                android:padding="16dp">
+            <!-- Línea vertical del timeline -->
+            <com.github.vipulasri.timelineview.TimelineView
+                android:id="@+id/timeline"
+                android:layout_width="24dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="160dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:startLineColor="@color/distNotStart"
+                app:endLineColor="@color/distNotStart"
+                app:lineStyle="dash"
+                app:lineWidth="3dp"
+                app:marker="@android:color/transparent" />
 
-                <!-- Número de curso en la esquina superior derecha -->
-                <TextView
-                    android:id="@+id/number"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="01"
-                    android:textStyle="bold"
-                    android:textSize="60sp"
-                    android:textColor="#262626"
-                    android:fontFamily="bevietnampro"
-                    android:gravity="right|top"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentEnd="true"
-                    android:lineSpacingExtra="-52sp"
-                    android:paddingTop="0dp"
-                    android:paddingEnd="0dp"
-                    android:layout_marginTop="0dp"
-                    android:layout_marginEnd="0dp"
-                />
+            <!-- Conector horizontal punteado -->
+            <View
+                android:id="@+id/connector"
+                android:layout_width="15dp"
+                android:layout_height="10dp"
+                android:background="@drawable/dashed_line"
+                android:elevation="6dp"
+                android:layout_marginStart="-20dp"
+                app:layout_constraintStart_toEndOf="@id/timeline"
+                app:layout_constraintEnd_toStartOf="@id/content_cardView"
+                app:layout_constraintTop_toTopOf="@id/content_cardView"
+                app:layout_constraintBottom_toBottomOf="@id/content_cardView"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintHorizontal_weight="1" />
 
-                <!-- Nuevo contenedor de barra de progreso debajo del número -->
+            <!-- Tarjeta con el contenido de la actividad -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/content_cardView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                app:cardCornerRadius="15dp"
+                app:cardElevation="2dp"
+                app:cardPreventCornerOverlap="false"
+                app:cardUseCompatPadding="true"
+                app:layout_constraintStart_toEndOf="@id/connector"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent">
+
+
                 <RelativeLayout
-                    android:id="@+id/progress_container"
+                    android:id="@+id/item_activity"
                     android:layout_width="match_parent"
+                    android:background="@drawable/rounded_background3"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/number"
-                    android:layout_alignParentStart="true"
-                    android:layout_marginTop="0dp"
-                    android:layout_marginEnd="0dp"
-                    android:paddingTop="0dp"
-                    android:paddingEnd="0dp">
+                    android:elevation="8dp"
+                    android:padding="16dp">
 
-                    <ProgressBar
-                        android:id="@+id/itemProgressBar"
-                        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-                        android:layout_width="match_parent"
-                        android:layout_height="16dp"
-                        android:progress="50"
-                        android:progressTint="#1CB1D1"
-                        android:backgroundTint="#E2E2E2"
-                        android:layout_alignParentStart="true"
-                        android:layout_alignParentEnd="true"
-                        android:layout_marginTop="0dp"
-                        android:layout_marginBottom="2dp"
-                    />
-
+                    <!-- Número de curso -->
                     <TextView
-                        android:id="@+id/itemProgress"
+                        android:id="@+id/number"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/itemProgressBar"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginTop="2dp"
-                        android:gravity="center"
-                        android:text="50%"
-                        android:textColor="#00213B"
-                        android:textSize="14sp"
-                        android:fontFamily="sans-serif"
-                    />
-                </RelativeLayout>
-
-                <!-- Nuevo contenedor para item_name y chip_estado debajo de la barra de progreso -->
-                <RelativeLayout
-                    android:id="@+id/item_name_chip_container"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/progress_container"
-                    android:layout_marginTop="8dp">
-
-                    <TextView
-                        android:id="@+id/item_name"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="20sp"
-                        android:textColor="#333333"
-                        android:textStyle="bold"
-                        android:fontFamily="bevietnampro"
                         android:layout_alignParentTop="true"
-                        android:layout_alignParentStart="true"
-                        android:layout_marginTop="0dp"
-                        android:layout_marginStart="0dp"
-                    />
-
-                    <ImageView
-                        android:id="@+id/goArrow"
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
-                        android:layout_alignTop="@id/item_name"
                         android:layout_alignParentEnd="true"
-                        android:layout_marginEnd="0dp"
-                        android:src="@drawable/ic_arrow" />
+                        android:fontFamily="bevietnampro"
+                        android:gravity="right|top"
+                        android:text="01"
+                        android:textColor="#262626"
+                        android:textSize="@dimen/number_text_size"
+                        android:textStyle="bold" />
 
+                    <!-- Contenedor de la barra de progreso -->
                     <RelativeLayout
-                        android:id="@+id/chip_estado"
-                        android:layout_width="wrap_content"
+                        android:id="@+id/progress_container"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/item_name"
-                        android:layout_alignParentStart="true"
-                        android:layout_marginTop="5dp"
-                        android:background="@drawable/complete_card"
-                        android:padding="5dp">
+                        android:layout_below="@id/number">
+
+                        <ProgressBar
+                            android:id="@+id/itemProgressBar"
+                            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="16dp"
+                            android:backgroundTint="#E2E2E2"
+                            android:progressTint="#1CB1D1" />
 
                         <TextView
-                            android:id="@+id/statusText"
+                            android:id="@+id/itemProgress"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_centerInParent="true"
-                            android:text="No Intentado"
-                            android:textColor="@color/md_white_1000" />
+                            android:layout_below="@id/itemProgressBar"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="2dp"
+                            android:fontFamily="sans-serif"
+                            android:gravity="center"
+                            android:text="0%"
+                            android:textColor="#00213B"
+                            android:textSize="14sp" />
+                    </RelativeLayout>
+
+                    <!-- Título + chip estado + flecha -->
+                    <RelativeLayout
+                        android:id="@+id/item_name_chip_container"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/progress_container"
+                        android:layout_marginTop="8dp">
+
+                        <TextView
+                            android:id="@+id/item_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentTop="true"
+                            android:fontFamily="bevietnampro"
+                            android:text="Título de la actividad"
+                            android:textColor="#333333"
+                            android:textSize="@dimen/item_name_text_size"
+                            android:textStyle="bold" />
+
+                        <ImageView
+                            android:id="@+id/goArrow"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:layout_alignTop="@id/item_name"
+                            android:layout_alignParentEnd="true"
+                            android:src="@drawable/buttonright" />
+
+                        <RelativeLayout
+                            android:id="@+id/chip_estado"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/item_name"
+                            android:layout_marginTop="5dp"
+                            android:background="@drawable/complete_card"
+                            android:padding="5dp">
+
+                            <TextView
+                                android:id="@+id/statusText"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:text="No Intentado"
+                                android:textColor="@color/md_white_1000" />
+                        </RelativeLayout>
                     </RelativeLayout>
                 </RelativeLayout>
-
-            </RelativeLayout>
-
-
-        </com.google.android.material.card.MaterialCardView>
-
+            </com.google.android.material.card.MaterialCardView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

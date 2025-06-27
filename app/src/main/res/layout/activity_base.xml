@@ -67,7 +67,7 @@
                         android:breakStrategy="simple"
                         android:hyphenationFrequency="none"
                         android:letterSpacing="0"
-                        android:textColor="#06354c"
+                        android:textColor="@color/titleColor"
                         android:padding="0dp"
                         android:gravity="center_vertical" />
 
@@ -99,7 +99,7 @@
 
 
             <LinearLayout
-                android:layout_width="180dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom|start"
                 android:layout_marginStart="40dp"
@@ -110,35 +110,35 @@
                 android:elevation="6dp">
 
                 <!-- Título -->
-<!-- Título con palabra “completados” en verde -->
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginBottom="2dp"
-    android:orientation="horizontal"
-    android:gravity="center_horizontal">
+                <!-- Título con palabra “completados” en verde -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="2dp"
+                    android:orientation="horizontal"
+                    android:gravity="center_horizontal">
 
-    <TextView
-        android:id="@+id/textViewItemTitlePrefix"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Contenidos "
-        android:textSize="12sp"
-        android:textColor="#B4B4B4"
-        android:fontFamily="font/bevietnampro"
-        android:elevation="6dp" />
+                    <TextView
+                        android:id="@+id/textViewItemTitlePrefix"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Contenidos "
+                        android:textSize="12sp"
+                        android:textColor="#B4B4B4"
+                        android:fontFamily="font/bevietnampro"
+                        android:elevation="6dp" />
 
-    <TextView
-        android:id="@+id/textViewItemTitleSuffix"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="completados"
-        android:textSize="12sp"
-        android:textColor="#1AD99D"
-        android:fontFamily="font/bevietnampro"
-        android:elevation="6dp" />
+                    <TextView
+                        android:id="@+id/textViewItemTitleSuffix"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="completados"
+                        android:textSize="12sp"
+                        android:textColor="#1AD99D"
+                        android:fontFamily="font/bevietnampro"
+                        android:elevation="6dp" />
 
-</LinearLayout>
+                </LinearLayout>
 
 
                 <!-- Contenedor para barra y texto superpuesto -->
@@ -172,99 +172,125 @@
                 </FrameLayout>
             </LinearLayout>
 
-
+            <!-- Barra inferior con grupo flotante -->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/bottomBarContainer"
                 android:layout_width="match_parent"
-                android:clipChildren="false"
-                android:clipToPadding="false"
                 android:layout_height="70dp"
                 android:layout_gravity="bottom"
                 android:background="@android:color/transparent"
-                android:elevation="4dp">
+                android:elevation="4dp"
+                android:clipChildren="false"
+                android:clipToPadding="false">
 
-                <!-- IZQUIERDA -->
+                <!-- CENTRO: imagen + círculo agrupados -->
+                <FrameLayout
+                    android:id="@+id/floatingGroup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clipChildren="false"
+                    android:clipToPadding="false"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent">
+
+                    <!-- Imagen de fondo -->
+                    <ImageView
+                        android:id="@+id/floatingButtonSpace"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/center" />
+
+                    <!-- Botón circular encima -->
+                    <FrameLayout
+                        android:id="@+id/circuloContainer"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:translationY="-30dp"
+                        android:elevation="6dp"
+                        android:clipChildren="false"
+                        android:clipToPadding="false"
+                        android:layout_gravity="center">
+
+                        <ImageButton
+                            android:id="@+id/circuloBase"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/circle"
+                            android:background="@null"
+                            android:scaleType="centerCrop"
+                            android:clipToOutline="true" />
+                    </FrameLayout>
+                </FrameLayout>
+
+                <!-- Barras laterales ajustadas al grupo flotante -->
                 <View
                     android:id="@+id/bottomBarLeft"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:background="#FFFFFF"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/floatingButtonSpace"
+                    app:layout_constraintEnd_toStartOf="@id/floatingGroup"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent" />
 
-                <!-- CENTRO: ajusta sus bounds para mantener proporción y llenar el alto -->
-                <ImageView
-                    android:id="@+id/floatingButtonSpace"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:adjustViewBounds="true"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/center"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent" />
-
-                <!-- DERECHA -->
                 <View
                     android:id="@+id/bottomBarRight"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:background="#FFFFFF"
-                    app:layout_constraintStart_toEndOf="@id/floatingButtonSpace"
+                    app:layout_constraintStart_toEndOf="@id/floatingGroup"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent" />
 
-                <!-- Aquí va el botón, sobre el hueco, centrado respecto a floatingButtonSpace -->
-                <FrameLayout
-                    android:id="@+id/circuloContainer"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:clipChildren="false"
-                    android:clipToPadding="false"
-                    android:translationY="-30dp"
-                    android:translationX="-5dp"
-                    android:elevation="6dp"
-                    app:layout_constraintStart_toStartOf="@id/floatingButtonSpace"
-                    app:layout_constraintEnd_toEndOf="@id/floatingButtonSpace"
-                    app:layout_constraintTop_toTopOf="@id/floatingButtonSpace"
-                    app:layout_constraintBottom_toBottomOf="@id/floatingButtonSpace">
-
-                    <ImageButton
-                        android:id="@+id/circuloBase"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:src="@drawable/circle"
-                        android:background="@null"
-                        android:scaleType="centerCrop"
-                        android:clipToOutline="true" />
-                </FrameLayout>
-
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <ImageButton android:id="@+id/btnMenu" android:layout_width="25dp"
-                android:layout_height="25dp" android:layout_gravity="bottom|start"
-                android:layout_marginStart="40dp" android:layout_marginBottom="25dp"
-                android:src="@drawable/menubot" android:background="@null"
-                android:scaleType="centerInside" android:elevation="9dp" />
+            <!-- Iconos fijos -->
+            <LinearLayout
+                android:id="@+id/fixedNavButtons"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|center_horizontal"
+                android:orientation="horizontal"
+                android:layout_marginBottom="25dp"
+                android:elevation="10dp">
 
-            <ImageButton android:id="@+id/btnMenuInfo" android:layout_width="25dp"
-                android:layout_height="25dp" android:layout_gravity="bottom|start"
-                android:layout_marginStart="0dp" android:layout_marginBottom="25dp"
-                android:src="@drawable/infobot" android:background="@null"
-                android:scaleType="centerInside" android:elevation="9dp" />
+                <ImageButton
+                    android:id="@+id/btnHome"
+                    android:layout_width="34dp"
+                    android:layout_height="34dp"
+                    android:layout_marginHorizontal="16dp"
+                    android:src="@drawable/home"
+                    android:background="@null"
+                    android:scaleType="centerInside"
+                    android:elevation="9dp" />
 
-            <ImageButton android:id="@+id/btnHome" android:layout_width="25dp"
-                android:layout_height="25dp" android:layout_gravity="bottom|start"
-                android:layout_marginStart="0dp" android:layout_marginBottom="25dp"
-                android:src="@drawable/home" android:background="@null"
-                android:scaleType="centerInside" android:elevation="9dp" />
+                <ImageButton
+                    android:id="@+id/btnMenu"
+                    android:layout_width="34dp"
+                    android:layout_height="34dp"
+                    android:layout_marginHorizontal="16dp"
+                    android:src="@drawable/menubot"
+                    android:background="@null"
+                    android:scaleType="centerInside"
+                    android:elevation="9dp" />
 
+                <ImageButton
+                    android:id="@+id/btnMenuInfo"
+                    android:layout_width="34dp"
+                    android:layout_height="34dp"
+                    android:layout_marginHorizontal="16dp"
+                    android:src="@drawable/infobot"
+                    android:background="@null"
+                    android:scaleType="centerInside"
+                    android:elevation="9dp" />
+            </LinearLayout>
 
-            <!-- Marca de agua en la esquina inferior derecha -->
+            <!-- Marca de agua -->
             <ImageView
                 android:id="@+id/watermark_logo_dl"
                 android:layout_width="210dp"
@@ -273,10 +299,10 @@
                 android:layout_marginEnd="20dp"
                 android:layout_marginBottom="20dp"
                 android:src="@drawable/logo_dl_2"
-                android:contentDescription="Marca de agua DL"
                 android:alpha="0.5"
                 android:scaleType="fitEnd"
                 android:elevation="8dp" />
+
 
         </FrameLayout>
     </LinearLayout>

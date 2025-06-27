@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#E2E2E2"
     android:fillViewport="true"
-        android:clipToPadding="false"
+    android:clipToPadding="false"
     android:paddingBottom="160dp"
     tools:context=".activities.MesaAyudaActivity"
     android:scrollbars="vertical">
@@ -14,8 +14,7 @@
     <!-- Contenedor centrador -->
     <LinearLayout
         android:layout_width="match_parent"
-            android:layout_marginTop="36dp"
-
+        android:layout_marginTop="36dp"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal">
 
@@ -56,7 +55,7 @@
                     android:id="@+id/textViewDLGroup"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="DL Group"
+                    android:text="Nosotros"
                     android:textColor="#00213B"
                     android:textSize="20sp"
                     android:fontFamily="font/bevietnampro"
@@ -66,11 +65,12 @@
                     android:id="@+id/textViewDLGroupDescription"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                android:text="Somos los herederos de los 25 años de experiencia de Digital Learning y la sinergia de las empresas DL Capacita, DL Innova y AmericaSalud.&#10;&#10;Nacimos con el propósito de entregar a nuestros clientes experiencias de aprendizaje que les permitan cumplir con su estrategia y hacer crecer a las y los trabajadores de su empresa.&#10;&#10;Contamos con un equipo de profesionales experimentados y orientados a la creación de contenidos que facilitan el aprendizaje de nuevas habilidades sociales y profesionales que les preparen para realizar de manera efectiva su trabajo.&#10;&#10;Utilizamos herramientas didácticas y tecnológicas vanguardistas y elaboramos planes de formación que permiten a las y los trabajadores capacitarse continuamente y de forma fácil y accesible en cualquier momento y lugar."
+                    android:text="En DL diseñamos soluciones integrales para el desarrollo del talento y la transformación organizacional, combinando la experiencia de consultores especializados en gestión de capital humano, tecnologías de vanguardia y una de las OTECs más reconocidas del país.\n\nNuestro modelo nos permite diseñar estrategias de financiamiento que optimizan el uso de la franquicia tributaria SENCE y reducen los costos para la empresa, adaptándonos a las necesidades y contextos específicos de cada cliente.\n\nTodo esto sin perder de vista el desarrollo de las personas, promoviendo movilidad social, crecimiento profesional y un impacto directo en la productividad de las organizaciones."
                     android:textColor="#00213B"
                     android:textSize="16sp"
                     android:fontFamily="font/bevietnampro"
                     android:layout_marginTop="12dp" />
+
             </LinearLayout>
 
             <!-- ========= Contacto ========= -->
@@ -84,7 +84,7 @@
                     android:id="@+id/textViewDLContactTitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Contactar a DL Group:"
+                    android:text="Contáctanos"
                     android:textColor="#00213B"
                     android:textSize="18sp"
                     android:fontFamily="font/bevietnampro"
@@ -94,11 +94,12 @@
                     android:id="@+id/textViewDLContactInfo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Coyancura 2283, 702 Providencia&#10;contacto@dl.cl&#10;+562 2495 7722"
+                    android:text="📧 contacto@dl.cl\n📞 +562 24957722\n🌐 www.dl.cl\n📍 Santa Beatriz 111, Oficina 101, Providencia, Santiago"
                     android:textColor="#00213B"
                     android:textSize="16sp"
                     android:fontFamily="font/bevietnampro"
-                    android:layout_marginTop="4dp" />
+                    android:layout_marginTop="8dp" />
+
             </LinearLayout>
 
         </LinearLayout>

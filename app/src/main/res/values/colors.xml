@@ -8,6 +8,9 @@
     <!--Colors
     2.0-->
     <color name="distButtons">#00A3AB</color>
+    <!-- dependiendo de la variacion de color -->
+    <color name="titleColor">#06354c</color>
+    <color name="titleColorRed">#F9475D</color>
     <color name="distOrangeDL">#CE6B00</color>
     <color name="distDeepColor">#D6F4F2</color>
     <color name="distGray">#CCCCCC</color>
@@ -18,6 +21,8 @@
     <color name="distComplete">#00A252</color>
     <color name="icon_normal">#06354C</color> <!-- Color original -->
     <color name="icon_selected">#FFFFFF</color> <!-- Cuando está activo -->
+    <color name="bottom_icon_normal">#7A8F9F</color>   <!-- gris-azulado que ya usas -->
+    <color name="bottom_icon_selected">#FFFFFF</color> <!-- blanco -->
 
 
     <array name="reds">
@@ -523,7 +528,7 @@
     <color name="md_orange_700">#f57c00</color>
     <color name="md_orange_800">#ef6c00</color>
     <color name="md_orange_900">#e65100</color>
-    <color name="md_orange_A100">#ffd180</color>
+    <color name="md_orange_A100">#ffd130</color>
     <color name="md_orange_A200">#ffab40</color>
     <color name="md_orange_A400">#ff9100</color>
     <color name="md_orange_A700">#ff6d00</color>

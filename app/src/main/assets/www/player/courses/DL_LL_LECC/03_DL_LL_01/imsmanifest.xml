@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<manifest identifier="DL_LL_01" version="1.0" xmlns="http://www.imsproject.org/xsd/imscp_rootv1p1p2" xmlns:adlcp="http://www.adlnet.org/xsd/adlcp_rootv1p2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsproject.org/xsd/imscp_rootv1p1p2 imscp_rootv1p1p2.xsd http://www.imsglobal.org/xsd/imsmd_rootv1p2p1 imsmd_rootv1p2p1.xsd http://www.adlnet.org/xsd/adlcp_rootv1p2 adlcp_rootv1p2.xsd">
+  <metadata>
+    <schema>ADL SCORM</schema>
+    <schemaversion>1.2</schemaversion>
+    <lom xmlns="http://www.imsglobal.org/xsd/imsmd_rootv1p2p1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/imsmd_rootv1p2p1 imsmd_rootv1p2p1.xsd">
+      <general>
+        <title>
+          <langstring xml:lang="x-none">El Derecho Laboral</langstring>
+        </title>
+      </general>
+      <lifecycle>
+        <version>
+          <langstring xml:lang="x-none">1</langstring>
+        </version>
+        <status>
+          <source>
+            <langstring xml:lang="x-none">LOMv1.0</langstring>
+          </source>
+          <value>
+            <langstring xml:lang="x-none">Final</langstring>
+          </value>
+        </status>
+      </lifecycle>
+      <metametadata>
+        <metadatascheme>ADL SCORM 1.2</metadatascheme>
+      </metametadata>
+      <educational>
+        <typicallearningtime>
+          <datetime>PT0H0M0S</datetime>
+        </typicallearningtime>
+      </educational>
+      <rights>
+        <cost>
+          <source>
+            <langstring xml:lang="x-none">LOMv1.0</langstring>
+          </source>
+          <value>
+            <langstring xml:lang="x-none">yes</langstring>
+          </value>
+        </cost>
+        <copyrightandotherrestrictions>
+          <source>
+            <langstring xml:lang="x-none">LOMv1.0</langstring>
+          </source>
+          <value>
+            <langstring xml:lang="x-none">yes</langstring>
+          </value>
+        </copyrightandotherrestrictions>
+      </rights>
+    </lom>
+  </metadata>
+  <organizations default="El_Derecho_Laboral_ORG">
+    <organization identifier="El_Derecho_Laboral_ORG">
+      <title>El Derecho Laboral</title>
+      <item identifier="DL_LL_01_SCO" isvisible="true" identifierref="_DL_LL_01_RES">
+        <title>El Derecho Laboral</title>
+      </item>
+    </organization>
+  </organizations>
+  <resources>
+    <resource identifier="_DL_LL_01_RES" type="webcontent" href="index_lms.html" adlcp:scormtype="sco">
+      <file href="story_content/thumbnail.jpg" />
+      <file href="mobile/6pr9NJMYKTz_P_0_163_2048_1067.jpg" />
+      <file href="mobile/5qJm4AgcrMD.png" />
+      <file href="mobile/648YkmHWP9r.png" />
+      <file href="mobile/5rTGKYWkTBW_X.png" />
+      <file href="mobile/6LCEHCxlrXx.png" />
+      <file href="story_content/6SL8jsrlb2Q_44100_96_0.mp3" />
+      <file href="mobile/6Nh5npz6Zms.jpg" />
+      <file href="mobile/6gwf1veHPkr_P_0_263_2048_1049.jpg" />
+      <file href="mobile/6S0esb7qrkj.png" />
+      <file href="mobile/5rTGKYWkTBW.png" />
+      <file href="story_content/6MjPNumHPaA_44100_96_0.mp3" />
+      <file href="story_content/video_6X4d7eB5DI8_20_96_910x510.mp4" />
+      <file href="mobile/poster_5VSLhp1nIRt_video_6X4d7eB5DI8_20_96_910x510.jpg" />
+      <file href="mobile/5wvq4DDstiV.png" />
+      <file href="mobile/6WvUFRrzR40.png" />
+      <file href="story_content/5uhRVNcjEUo_44100_96_0.mp3" />
+      <file href="mobile/6i46f8OO8bE.png" />
+      <file href="mobile/686Ke60revX.png" />
+      <file href="story_content/5X3PBlsyLGc_44100_96_0.mp3" />
+      <file href="mobile/5vaiglCFpiA.png" />
+      <file href="mobile/5hcguTdBmKy_P_98_0_917_356.png" />
+      <file href="story_content/video_6SFKJpRLU1v_20_96_910x510.mp4" />
+      <file href="mobile/poster_6LQ67GqKqYN_video_6SFKJpRLU1v_20_96_910x510.jpg" />
+      <file href="story_content/6m2YplafXUw_44100_96_0.mp3" />
+      <file href="mobile/62cEJn7ZqUb.png" />
+      <file href="story_content/video_6r60XV4k0ds_20_96_910x510.mp4" />
+      <file href="mobile/poster_62OKqFi9AYP_video_6r60XV4k0ds_20_96_910x510.jpg" />
+      <file href="mobile/6BOp5N7BlK6.png" />
+      <file href="mobile/68GR1sZ0Omu.png" />
+      <file href="mobile/67yoyta36hj.png" />
+      <file href="mobile/6plhgZyCPr3.png" />
+      <file href="mobile/5YopnMGd5S0.png" />
+      <file href="story_content/6olDV3iCnAg_44100_96_0.mp3" />
+      <file href="mobile/6BleiGDx9yq.png" />
+      <file href="story_content/61ZrL6S7vyI_44100_96_0.mp3" />
+      <file href="story_content/video_6oO63aAKq7D_20_96_910x510.mp4" />
+      <file href="mobile/poster_5iIhsvHcfiU_video_6oO63aAKq7D_20_96_910x510.jpg" />
+      <file href="mobile/6dCNFvq7I11.png" />
+      <file href="mobile/65KBwcjKeQh.png" />
+      <file href="mobile/6QS1VELBssW.png" />
+      <file href="story_content/6aN2deudLd2_44100_96_0.mp3" />
+      <file href="mobile/6dNDzqnCV8g.png" />
+      <file href="story_content/video_65qzs8WYuH9_20_96_910x510.mp4" />
+      <file href="mobile/poster_61WRxfuTajs_video_65qzs8WYuH9_20_96_910x510.jpg" />
+      <file href="mobile/5mjZ2J8WSVG.png" />
+      <file href="story_content/6EIKVskge82_44100_96_0.mp3" />
+      <file href="meta.xml" />
+      <file href="story_content/user.js" />
+      <file href="html5/data/css/output.min.css" />
+      <file href="html5/data/js/5jicpACTxda.js" />
+      <file href="html5/data/js/5rSgGZR08Pk.js" />
+      <file href="html5/data/js/5tp47ql1tsF.js" />
+      <file href="html5/data/js/5UuaJ2DIfeZ.js" />
+      <file href="html5/data/js/5XeVyntUGoe.js" />
+      <file href="html5/data/js/66lbtG7u6Bf.js" />
+      <file href="html5/data/js/6Apcw9Vf2Kk.js" />
+      <file href="html5/data/js/6BJE0TgPXw4.js" />
+      <file href="html5/data/js/6DYrm16B4wL.js" />
+      <file href="html5/data/js/6hdmVXpRCS4.js" />
+      <file href="html5/data/js/6iFv2b9iWSh.js" />
+      <file href="html5/data/js/6Nr6X6RUkkG.js" />
+      <file href="html5/data/js/6qvJTMZCcU1.js" />
+      <file href="html5/data/js/6UWxTGn4v64.js" />
+      <file href="html5/data/js/data.js" />
+      <file href="html5/data/js/frame.js" />
+      <file href="html5/data/js/paths.js" />
+      <file href="html5/lib/scripts/bootstrapper.min.js" />
+      <file href="html5/lib/scripts/frame.desktop.min.js" />
+      <file href="html5/lib/scripts/frame.mobile.min.js" />
+      <file href="html5/lib/scripts/slides.min.js" />
+      <file href="html5/lib/stylesheets/desktop.min.css" />
+      <file href="html5/lib/stylesheets/mobile.min.css" />
+      <file href="html5/lib/stylesheets/mobile-fonts/open-sans-bold.woff" />
+      <file href="html5/lib/stylesheets/mobile-fonts/open-sans-light.woff" />
+      <file href="html5/lib/stylesheets/mobile-fonts/open-sans-regular.woff" />
+      <file href="analytics-frame.html" />
+      <file href="story.html" />
+      <file href="index_lms.html" />
+      <file href="lms/AICCComm.html" />
+      <file href="lms/blank.html" />
+      <file href="lms/browsersniff.js" />
+      <file href="lms/goodbye.html" />
+      <file href="lms/scormdriver.js" />
+    </resource>
+  </resources>
+</manifest>

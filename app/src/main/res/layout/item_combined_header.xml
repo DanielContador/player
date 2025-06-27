@@ -7,21 +7,10 @@
 
     <ImageView
         android:id="@+id/top_center_image"
-        android:layout_width="460dp"
-        android:layout_height="74dp"
+        android:layout_width="600dp"
+        android:layout_height="wrap_content"
         android:src="@drawable/miconte2"
         android:contentDescription="@string/app_name" />
 
-    <TextView
-        android:id="@+id/centered_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Conozca nuevas herramientas y conocimientos para su trabajo"
-        android:textColor="#06241B"
-        android:textAlignment="center"
-        android:gravity="center"
-        android:textSize="16sp"
-        android:fontFamily="@font/bevietnampro"
-        android:lineSpacingExtra="8dp"
-        android:layout_marginTop="12dp" />
+
 </LinearLayout>

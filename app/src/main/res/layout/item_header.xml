@@ -38,7 +38,7 @@
                     android:id="@+id/ir_a_otros"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:text="Ir a otros"
+                    android:text="Ir atrás"
                     android:textColor="#1CB1D1"
                     android:textSize="18sp"
                     android:gravity="center_vertical"

@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<manifest identifier="DL_LL_12" version="1.0" xmlns="http://www.imsproject.org/xsd/imscp_rootv1p1p2" xmlns:adlcp="http://www.adlnet.org/xsd/adlcp_rootv1p2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsproject.org/xsd/imscp_rootv1p1p2 imscp_rootv1p1p2.xsd http://www.imsglobal.org/xsd/imsmd_rootv1p2p1 imsmd_rootv1p2p1.xsd http://www.adlnet.org/xsd/adlcp_rootv1p2 adlcp_rootv1p2.xsd">
+  <metadata>
+    <schema>ADL SCORM</schema>
+    <schemaversion>1.2</schemaversion>
+    <lom xmlns="http://www.imsglobal.org/xsd/imsmd_rootv1p2p1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/imsmd_rootv1p2p1 imsmd_rootv1p2p1.xsd">
+      <general>
+        <title>
+          <langstring xml:lang="x-none">Acoso Sexual</langstring>
+        </title>
+      </general>
+      <lifecycle>
+        <version>
+          <langstring xml:lang="x-none">1</langstring>
+        </version>
+        <status>
+          <source>
+            <langstring xml:lang="x-none">LOMv1.0</langstring>
+          </source>
+          <value>
+            <langstring xml:lang="x-none">Final</langstring>
+          </value>
+        </status>
+      </lifecycle>
+      <metametadata>
+        <metadatascheme>ADL SCORM 1.2</metadatascheme>
+      </metametadata>
+      <educational>
+        <typicallearningtime>
+          <datetime>PT0H0M0S</datetime>
+        </typicallearningtime>
+      </educational>
+      <rights>
+        <cost>
+          <source>
+            <langstring xml:lang="x-none">LOMv1.0</langstring>
+          </source>
+          <value>
+            <langstring xml:lang="x-none">yes</langstring>
+          </value>
+        </cost>
+        <copyrightandotherrestrictions>
+          <source>
+            <langstring xml:lang="x-none">LOMv1.0</langstring>
+          </source>
+          <value>
+            <langstring xml:lang="x-none">yes</langstring>
+          </value>
+        </copyrightandotherrestrictions>
+      </rights>
+    </lom>
+  </metadata>
+  <organizations default="Acoso_Sexual_ORG">
+    <organization identifier="Acoso_Sexual_ORG">
+      <title>Acoso Sexual</title>
+      <item identifier="DL_LL_12_SCO" isvisible="true" identifierref="_DL_LL_12_RES">
+        <title>Acoso Sexual</title>
+      </item>
+    </organization>
+  </organizations>
+  <resources>
+    <resource identifier="_DL_LL_12_RES" type="webcontent" href="index_lms.html" adlcp:scormtype="sco">
+      <file href="story_content/thumbnail.jpg" />
+      <file href="mobile/5vIFNy3ZpFr_P_0_313_2048_1051.jpg" />
+      <file href="mobile/5qJm4AgcrMD.png" />
+      <file href="mobile/648YkmHWP9r.png" />
+      <file href="mobile/5rTGKYWkTBW_X.png" />
+      <file href="mobile/6LCEHCxlrXx.png" />
+      <file href="story_content/5ieRAgUzN24_44100_96_0.mp3" />
+      <file href="mobile/6Nh5npz6Zms.jpg" />
+      <file href="story_content/video_6LcuqkoF1t5_20_96_908x508.mp4" />
+      <file href="mobile/poster_5lRRGJP7fxy_video_6LcuqkoF1t5_20_96_908x508.jpg" />
+      <file href="mobile/6S0esb7qrkj.png" />
+      <file href="mobile/5rTGKYWkTBW.png" />
+      <file href="story_content/5rTqPM6gsUc_44100_96_0.mp3" />
+      <file href="mobile/6NYeDNC6jMJ.png" />
+      <file href="story_content/video_5ffL7mu6gRe_20_96_940x534.mp4" />
+      <file href="mobile/poster_6HBmmj5a2ym_video_5ffL7mu6gRe_20_96_940x534.jpg" />
+      <file href="mobile/5lOd1E1Vtec.png" />
+      <file href="story_content/5lOQQkUC4Wg_44100_96_0.mp3" />
+      <file href="mobile/5vaiglCFpiA.png" />
+      <file href="mobile/5hcguTdBmKy_P_98_0_917_356.png" />
+      <file href="story_content/video_60n19NbRPWx_20_96_940x534.mp4" />
+      <file href="mobile/poster_6Pp3eZHEOfi_video_60n19NbRPWx_20_96_940x534.jpg" />
+      <file href="story_content/6RlesYLs8JL_44100_96_0.mp3" />
+      <file href="mobile/5p4loiHpbiJ.png" />
+      <file href="story_content/video_6Bt9W7h2lLc_20_96_908x508.mp4" />
+      <file href="mobile/poster_5ha7ec5vtYF_video_6Bt9W7h2lLc_20_96_908x508.jpg" />
+      <file href="mobile/69DhsoTh9YT.png" />
+      <file href="story_content/5rt4bwOFVrk_44100_96_0.mp3" />
+      <file href="story_content/video_5Vy3fdfGyjc_20_96_908x508.mp4" />
+      <file href="mobile/poster_6bLA1PgDS8z_video_5Vy3fdfGyjc_20_96_908x508.jpg" />
+      <file href="story_content/6eGIOfKuW2j_44100_96_0.mp3" />
+      <file href="mobile/6mCFIkJr5s9.png" />
+      <file href="story_content/video_6FDTflNhicU_20_96_908x508.mp4" />
+      <file href="mobile/poster_6Gbid5B5Zwc_video_6FDTflNhicU_20_96_908x508.jpg" />
+      <file href="story_content/5trU8xAW60H_44100_96_0.mp3" />
+      <file href="mobile/6j82w8hHuz1.png" />
+      <file href="story_content/video_5qXVBPZfBAW_20_96_908x508.mp4" />
+      <file href="mobile/poster_5hrUsRb1Iwm_video_5qXVBPZfBAW_20_96_908x508.jpg" />
+      <file href="mobile/5mjZ2J8WSVG.png" />
+      <file href="story_content/6PDfqU5DIOq_44100_96_0.mp3" />
+      <file href="meta.xml" />
+      <file href="story_content/user.js" />
+      <file href="html5/data/css/output.min.css" />
+      <file href="html5/data/js/5cTwkNqvzYt.js" />
+      <file href="html5/data/js/5cwH20bgHs9.js" />
+      <file href="html5/data/js/5gQ2BZstVTH.js" />
+      <file href="html5/data/js/5wqyj1WVx0F.js" />
+      <file href="html5/data/js/5XeVyntUGoe.js" />
+      <file href="html5/data/js/5XI7VqRnnkW.js" />
+      <file href="html5/data/js/68yduwkZ6rG.js" />
+      <file href="html5/data/js/6Apcw9Vf2Kk.js" />
+      <file href="html5/data/js/6k4XokkByau.js" />
+      <file href="html5/data/js/6kNmRKZUnVW.js" />
+      <file href="html5/data/js/6OEka5lg5kt.js" />
+      <file href="html5/data/js/6pYmHBpeQ12.js" />
+      <file href="html5/data/js/6qRnSjNF0r0.js" />
+      <file href="html5/data/js/6qvJTMZCcU1.js" />
+      <file href="html5/data/js/6UWxTGn4v64.js" />
+      <file href="html5/data/js/data.js" />
+      <file href="html5/data/js/frame.js" />
+      <file href="html5/data/js/paths.js" />
+      <file href="html5/lib/scripts/bootstrapper.min.js" />
+      <file href="html5/lib/scripts/frame.desktop.min.js" />
+      <file href="html5/lib/scripts/frame.mobile.min.js" />
+      <file href="html5/lib/scripts/slides.min.js" />
+      <file href="html5/lib/stylesheets/desktop.min.css" />
+      <file href="html5/lib/stylesheets/mobile.min.css" />
+      <file href="html5/lib/stylesheets/mobile-fonts/open-sans-bold.woff" />
+      <file href="html5/lib/stylesheets/mobile-fonts/open-sans-light.woff" />
+      <file href="html5/lib/stylesheets/mobile-fonts/open-sans-regular.woff" />
+      <file href="analytics-frame.html" />
+      <file href="story.html" />
+      <file href="index_lms.html" />
+      <file href="lms/AICCComm.html" />
+      <file href="lms/blank.html" />
+      <file href="lms/browsersniff.js" />
+      <file href="lms/goodbye.html" />
+      <file href="lms/scormdriver.js" />
+    </resource>
+  </resources>
+</manifest>

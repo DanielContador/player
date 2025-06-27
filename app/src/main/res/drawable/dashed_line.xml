@@ -1,0 +1,9 @@
+<!-- res/drawable/dashed_line.xml -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="line">
+    <stroke
+        android:width="2dp"
+        android:color="@android:color/black"
+        android:dashWidth="6dp"
+        android:dashGap="4dp"/>
+</shape>

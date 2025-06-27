@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<manifest identifier="DL_LL_08" version="1.0" xmlns="http://www.imsproject.org/xsd/imscp_rootv1p1p2" xmlns:adlcp="http://www.adlnet.org/xsd/adlcp_rootv1p2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsproject.org/xsd/imscp_rootv1p1p2 imscp_rootv1p1p2.xsd http://www.imsglobal.org/xsd/imsmd_rootv1p2p1 imsmd_rootv1p2p1.xsd http://www.adlnet.org/xsd/adlcp_rootv1p2 adlcp_rootv1p2.xsd">
+  <metadata>
+    <schema>ADL SCORM</schema>
+    <schemaversion>1.2</schemaversion>
+    <lom xmlns="http://www.imsglobal.org/xsd/imsmd_rootv1p2p1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/imsmd_rootv1p2p1 imsmd_rootv1p2p1.xsd">
+      <general>
+        <title>
+          <langstring xml:lang="x-none">Protección de la Maternidad y la Mujer</langstring>
+        </title>
+      </general>
+      <lifecycle>
+        <version>
+          <langstring xml:lang="x-none">1</langstring>
+        </version>
+        <status>
+          <source>
+            <langstring xml:lang="x-none">LOMv1.0</langstring>
+          </source>
+          <value>
+            <langstring xml:lang="x-none">Final</langstring>
+          </value>
+        </status>
+      </lifecycle>
+      <metametadata>
+        <metadatascheme>ADL SCORM 1.2</metadatascheme>
+      </metametadata>
+      <educational>
+        <typicallearningtime>
+          <datetime>PT0H0M0S</datetime>
+        </typicallearningtime>
+      </educational>
+      <rights>
+        <cost>
+          <source>
+            <langstring xml:lang="x-none">LOMv1.0</langstring>
+          </source>
+          <value>
+            <langstring xml:lang="x-none">yes</langstring>
+          </value>
+        </cost>
+        <copyrightandotherrestrictions>
+          <source>
+            <langstring xml:lang="x-none">LOMv1.0</langstring>
+          </source>
+          <value>
+            <langstring xml:lang="x-none">yes</langstring>
+          </value>
+        </copyrightandotherrestrictions>
+      </rights>
+    </lom>
+  </metadata>
+  <organizations default="Protección_de_la_Maternidad_y_la_Mujer_ORG">
+    <organization identifier="Protección_de_la_Maternidad_y_la_Mujer_ORG">
+      <title>Protección de la Maternidad y la Mujer</title>
+      <item identifier="DL_LL_08_SCO" isvisible="true" identifierref="_DL_LL_08_RES">
+        <title>Protección de la Maternidad y la Mujer</title>
+      </item>
+    </organization>
+  </organizations>
+  <resources>
+    <resource identifier="_DL_LL_08_RES" type="webcontent" href="index_lms.html" adlcp:scormtype="sco">
+      <file href="story_content/thumbnail.jpg" />
+      <file href="mobile/5lUUiOggVdh_P_0_99_2048_1056.jpg" />
+      <file href="mobile/5qJm4AgcrMD.png" />
+      <file href="mobile/648YkmHWP9r.png" />
+      <file href="mobile/5rTGKYWkTBW_X.png" />
+      <file href="mobile/6LCEHCxlrXx.png" />
+      <file href="story_content/6ZZ3YwSDggJ_44100_96_0.mp3" />
+      <file href="mobile/6Nh5npz6Zms.jpg" />
+      <file href="mobile/5jOX6aydYrg_P_0_310_2048_1054.jpg" />
+      <file href="mobile/6S0esb7qrkj.png" />
+      <file href="mobile/5rTGKYWkTBW.png" />
+      <file href="story_content/5fB2AS8E5Ub_44100_96_0.mp3" />
+      <file href="story_content/video_6DwUOUPonPp_20_96_940x534.mp4" />
+      <file href="mobile/poster_5aXPmAB89A5_video_6DwUOUPonPp_20_96_940x534.jpg" />
+      <file href="mobile/5ecZEW694QE.png" />
+      <file href="mobile/5vaiglCFpiA.png" />
+      <file href="story_content/5s8Kcs5H7NZ_44100_96_0.mp3" />
+      <file href="mobile/5hcguTdBmKy_P_98_0_917_356.png" />
+      <file href="mobile/6oiJ4EnXfXV.png" />
+      <file href="story_content/5yUxQvNWET5_44100_96_0.mp3" />
+      <file href="mobile/62dIdengS7E.png" />
+      <file href="story_content/6NJdSrd5ZK0_44100_96_0.mp3" />
+      <file href="mobile/64JQJhxTDma.png" />
+      <file href="story_content/video_6GrdZW50tTj_20_96_908x508.mp4" />
+      <file href="mobile/poster_5lsSqYHnwnw_video_6GrdZW50tTj_20_96_908x508.jpg" />
+      <file href="mobile/5jYjjG0C9ZA.png" />
+      <file href="story_content/6lFxb6L1Ndg_44100_96_0.mp3" />
+      <file href="mobile/6k4MvrXpbRb.png" />
+      <file href="story_content/video_5wUcuZeA7fH_20_96_940x532.mp4" />
+      <file href="mobile/poster_6T2DZqe1tJo_video_5wUcuZeA7fH_20_96_940x532.jpg" />
+      <file href="mobile/5mjZ2J8WSVG.png" />
+      <file href="story_content/6BRNuNtODrM_44100_96_0.mp3" />
+      <file href="meta.xml" />
+      <file href="story_content/user.js" />
+      <file href="html5/data/css/output.min.css" />
+      <file href="html5/data/js/5cTwkNqvzYt.js" />
+      <file href="html5/data/js/5vNJaZmVFuZ.js" />
+      <file href="html5/data/js/5wqyj1WVx0F.js" />
+      <file href="html5/data/js/5XeVyntUGoe.js" />
+      <file href="html5/data/js/6Apcw9Vf2Kk.js" />
+      <file href="html5/data/js/6k4XokkByau.js" />
+      <file href="html5/data/js/6kNmRKZUnVW.js" />
+      <file href="html5/data/js/6KwHfxjmZfl.js" />
+      <file href="html5/data/js/6qvJTMZCcU1.js" />
+      <file href="html5/data/js/6UWxTGn4v64.js" />
+      <file href="html5/data/js/data.js" />
+      <file href="html5/data/js/frame.js" />
+      <file href="html5/data/js/paths.js" />
+      <file href="html5/lib/scripts/bootstrapper.min.js" />
+      <file href="html5/lib/scripts/frame.desktop.min.js" />
+      <file href="html5/lib/scripts/frame.mobile.min.js" />
+      <file href="html5/lib/scripts/slides.min.js" />
+      <file href="html5/lib/stylesheets/desktop.min.css" />
+      <file href="html5/lib/stylesheets/mobile.min.css" />
+      <file href="html5/lib/stylesheets/mobile-fonts/open-sans-bold.woff" />
+      <file href="html5/lib/stylesheets/mobile-fonts/open-sans-light.woff" />
+      <file href="html5/lib/stylesheets/mobile-fonts/open-sans-regular.woff" />
+      <file href="analytics-frame.html" />
+      <file href="story.html" />
+      <file href="index_lms.html" />
+      <file href="lms/AICCComm.html" />
+      <file href="lms/blank.html" />
+      <file href="lms/browsersniff.js" />
+      <file href="lms/goodbye.html" />
+      <file href="lms/scormdriver.js" />
+    </resource>
+  </resources>
+</manifest>

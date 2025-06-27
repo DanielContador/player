@@ -33,7 +33,7 @@
         android:clipToPadding="false"
         android:layoutAnimation="@anim/layout_animation_from_bottom"
         android:padding="5dp"
-        android:paddingBottom="0dp"
+        android:paddingBottom="200dp"
         android:scrollbarStyle="insideOverlay"
         android:scrollbarThumbVertical="@drawable/scrollbar"
         android:scrollbars="vertical"
